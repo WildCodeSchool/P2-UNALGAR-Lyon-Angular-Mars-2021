@@ -7,6 +7,11 @@ import { HomeComponent } from "./home/home.component";
 import { GameComponent } from "./game/game.component";
 import { RulesComponent } from "./rules/rules.component";
 import { ContactComponent } from "./contact/contact.component";
+import { TimerComponent } from "./game/timer/timer.component";
+import { TimelineComponent } from "./game/timeline/timeline.component";
+import { CardDeckComponent } from "./game/card-deck/card-deck.component";
+import { ButtonComponent } from "./common/button/button.component";
+import { HandComponent } from "./game/hand/hand.component";
 
 @NgModule({
   declarations: [
@@ -15,6 +20,11 @@ import { ContactComponent } from "./contact/contact.component";
     GameComponent,
     RulesComponent,
     ContactComponent,
+    TimerComponent,
+    TimelineComponent,
+    CardDeckComponent,
+    ButtonComponent,
+    HandComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
