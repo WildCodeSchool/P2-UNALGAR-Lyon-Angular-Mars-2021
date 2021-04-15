@@ -1,0 +1,24 @@
+p {
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form-item {
+  margin: 20px;
+}
+
+label {
+  display: block;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

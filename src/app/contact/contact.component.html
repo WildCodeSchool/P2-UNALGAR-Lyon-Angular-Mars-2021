@@ -1,1 +1,58 @@
-<p>contact works!</p>
+<div class="flex-container">
+
+  <img src="../../assets/img/UNALGAR_TIMELINE_HISTORY__1_-removebg-preview.png" alt="Unalgar team with logo">
+  <h2>Nous contacter</h2>
+
+  <p>WILD CODE SCHOOL <br>
+    17 Rue DELANDINE <br>
+    69002 LYON <br>
+    06 40 95 24 24</p>
+
+  <form (ngSubmit)="form.valid" #form="ngForm">
+
+    <div class="form-item">
+      <label for="lastname-user">Lastname</label>
+      <input type="text" name="lastname" [(ngModel)]="user.lastname" required minlength="3" maxlength="15"
+        #lastname="ngModel" />
+      <div *ngIf="form.submitted && lastname.errors">
+        <span *ngIf="lastname.errors?.required">*Le nom est requis</span>
+        <span *ngIf="lastname.errors?.minlength">*Le nom doit avoir au moins 3 caractères</span>
+      </div>
+    </div>
+
+    <div class="form-item">
+      <label for="firstname-user">Firstname</label>
+      <input type="text" name="firstname" [(ngModel)]="user.firstname" required minlength="3" maxlength="15"
+        #firstname="ngModel" />
+      <div *ngIf="form.submitted && firstname.errors">
+        <span *ngIf="firstname.errors?.required">*Le prénom est requis</span>
+        <span *ngIf="firstname.errors?.minlength">*Le prénom doit avoir au moins 3 caractères</span>
+      </div>
+    </div>
+
+    <div class="form-item">
+      <label for="mail-user">Mail</label>
+      <input type="mail" name="mail" [(ngModel)]="user.mail" required email #mail="ngModel" />
+      <div *ngIf="form.submitted && mail.errors">
+        <span *ngIf="mail.errors?.required">*Le mail est requis</span>
+        <span *ngIf="mail.errors?.email">*Le mail est requis</span>
+      </div>
+    </div>
+
+    <div class="form-item">
+      <label for="message-user">Message</label>
+      <input type="textarea" name="message-user" [(ngModel)]="user.message" required #message="ngModel" />
+      <div *ngIf="form.submitted && message.errors">
+        <span *ngIf="message.errors?.required">*Merci de remplir votre message</span>
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+
+    <div *ngIf="form.submitted && form.invalid">
+      <span>*Le formulaire n'est pas rempli correctement</span>
+    </div>
+
+  </form>
+
+</div>

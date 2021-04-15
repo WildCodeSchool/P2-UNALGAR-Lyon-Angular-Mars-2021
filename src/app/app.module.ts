@@ -12,6 +12,7 @@ import { TimelineComponent } from "./game/timeline/timeline.component";
 import { CardDeckComponent } from "./game/card-deck/card-deck.component";
 import { ButtonComponent } from "./common/button/button.component";
 import { HandComponent } from "./game/hand/hand.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { HandComponent } from "./game/hand/hand.component";
     ButtonComponent,
     HandComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
