@@ -1,4 +1,17 @@
+<button id="pickingDeck">PIOCHE</button>
 <app-timer></app-timer>
-<app-timeline></app-timeline>
-<app-card-deck></app-card-deck>
+<app-timeline [firstCard]="firstCard"></app-timeline>
+<app-card-deck #cardDeck></app-card-deck>>
 <app-hand></app-hand>
+
+
+
+<!-- 
+
+<button (click)="cardDeck.pickRandomCard">PIOCHE</button>
+<app-timer></app-timer>
+<app-timeline [firstCardTime]="firstCardGame"></app-timeline>
+<app-card-deck #cardDeck (firstcardDeckEmitter)=”onReceiveFirstcardDeck($event)”></app-card-deck>>
+<app-hand></app-hand>
+
+-->

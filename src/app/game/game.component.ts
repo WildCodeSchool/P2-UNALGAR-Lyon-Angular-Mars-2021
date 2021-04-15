@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { TimerComponent } from "./timer/timer.component";
 import { TimelineComponent } from "./timeline/timeline.component";
 import { CardDeckComponent } from "./card-deck/card-deck.component";
@@ -13,5 +13,11 @@ import { HandComponent } from "./hand/hand.component";
 export class GameComponent implements OnInit {
   constructor() {}
 
+  firstCard: object = { title: "hello" };
+
   ngOnInit(): void {}
+
+  /*onReceiveFirstcardDeck($event: object) {
+    this.firstCardGame = $event;
+  }*/
 }

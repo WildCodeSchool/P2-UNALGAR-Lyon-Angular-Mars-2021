@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.css']
+  selector: "app-timeline",
+  templateUrl: "./timeline.component.html",
+  styleUrls: ["./timeline.component.css"],
 })
 export class TimelineComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  @Input() firstCard: object;
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
