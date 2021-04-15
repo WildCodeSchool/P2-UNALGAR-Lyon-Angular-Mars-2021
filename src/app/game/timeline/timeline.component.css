@@ -1,0 +1,38 @@
+#scroll-progress {
+    background: green;
+    height: 6px;
+    margin-top: 32px;
+    width: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#scroller {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+#scroller li {
+    background: #b0bec5;
+    color: #fff;
+    display: inline-block;
+    font-size: 80px;
+    font-weight: bold;
+    height: 200px;
+    width: 200px;
+    line-height: 200px;
+    text-align: center;
+}
+
+li {
+    margin: 4px;
+}
+
+h1 {
+    text-align: center;
+}
