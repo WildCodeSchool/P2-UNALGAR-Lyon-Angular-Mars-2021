@@ -4,6 +4,7 @@ import { TimelineComponent } from "./timeline/timeline.component";
 import { CardDeckComponent } from "./card-deck/card-deck.component";
 import { ButtonComponent } from "../common/button/button.component";
 import { HandComponent } from "./hand/hand.component";
+import { Card } from "../common/card.model";
 
 @Component({
   selector: "app-game",
@@ -13,11 +14,11 @@ import { HandComponent } from "./hand/hand.component";
 export class GameComponent implements OnInit {
   constructor() {}
 
-  firstCard: object;
+  firstCard: Card;
 
   ngOnInit(): void {}
 
-  onReceiveFirstcard($event: object) {
+  onReceiveFirstcard($event: Card) {
     this.firstCard = $event;
   }
 }

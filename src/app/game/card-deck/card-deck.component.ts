@@ -27,7 +27,7 @@ export class CardDeckComponent implements OnInit {
   pickRandomCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.firstCard = this.cardDeck[randomIndex];
-    /*this.cardDeck = this.cardDeck.splice(randomIndex, 1); TODO: ne marche pas!!*/
+    /*TO DO : NE MARCHE PAS this.cardDeck = this.cardDeck.splice(randomIndex, 1);*/
     this.sendingfirstcard();
   }
 }
