@@ -13,11 +13,11 @@ import { HandComponent } from "./hand/hand.component";
 export class GameComponent implements OnInit {
   constructor() {}
 
-  firstCard: object = { title: "hello" };
+  firstCard: object;
 
   ngOnInit(): void {}
 
-  /*onReceiveFirstcardDeck($event: object) {
-    this.firstCardGame = $event;
-  }*/
+  onReceiveFirstcard($event: object) {
+    this.firstCard = $event;
+  }
 }

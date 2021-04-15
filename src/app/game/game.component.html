@@ -1,7 +1,6 @@
-<button id="pickingDeck">PIOCHE</button>
 <app-timer></app-timer>
 <app-timeline [firstCard]="firstCard"></app-timeline>
-<app-card-deck #cardDeck></app-card-deck>>
+<app-card-deck #cardDeck (firstcardEmitter)="onReceiveFirstcard($event)"></app-card-deck>>
 <app-hand></app-hand>
 
 
