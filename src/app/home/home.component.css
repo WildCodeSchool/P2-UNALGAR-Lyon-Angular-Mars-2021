@@ -1,0 +1,23 @@
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 750px;
+  width: 750px;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: transparent;
+  font-size: 25px;
+  padding: 10px;
+  background: transparent;
+  font-family: "Russo One", sans-serif;
+}
+
+button:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}

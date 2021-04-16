@@ -1,1 +1,52 @@
-<p>rules works!</p>
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="rules.component.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <title>Unaglar Timeline</title>
+</head>
+ 
+<body>
+   
+     <div class="rules">
+        <h2>REGLES</h2>
+         <p>1.On a un deck de 100 cartes mélangées<br><br>
+
+            2.Le joueur débute le jeu <br>
+            > une première carte (carte 1) avec date révélée est placée sur la timelinec
+            > le joueur pioche une carte (carte 2)<br>
+            > le timer démarre (5min, décroissant)<br><br>
+
+            3.Le joueur place la carte 2 avant ou après la carte 1<br><br>
+
+            4.Le joueur valide son choix :<br>
+            la date de la carte 2 est révélée<br>
+            le jeu valide ou non la position<br><br>
+
+            5.1 Erreur : <br>
+                - pénalité du temps + 2 secondes<br>
+                - la carte révélée disparaît et n’est plus dans la pioche<br>
+            5.2 Si validé :<br>
+                - la carte reste sur la timeline <br>
+                - le joueur peut piocher une autre carte<br><br>
+
+            6.Le joueur pioche une autre carte (carte 3) et la place entre les 2 cartes qui lui semblent le plus pertinent<br><br>
+
+            7.Le jeu se termine quand le chrono est terminé ou quand toutes les cartes ont été posées<br><br>
+
+            8.Le joueur voit son score (nombre de cartes bien placées en temps imparti)<br><br>
+
+            9.Le joueur peut rejouer<br><br>
+
+        <button [routerLink]='[""]'><img src="../../assets/img/fleche.png"></button>
+
+     </div>
+       
+   
+ </body>
+</html>
