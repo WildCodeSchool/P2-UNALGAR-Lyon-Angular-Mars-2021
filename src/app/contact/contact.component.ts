@@ -12,4 +12,8 @@ export class ContactComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  alert() {
+    window.alert("Votre message a bien été envoyé!");
+  }
 }

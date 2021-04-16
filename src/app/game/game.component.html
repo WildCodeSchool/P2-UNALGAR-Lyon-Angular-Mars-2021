@@ -1,16 +1,8 @@
 <app-timer></app-timer>
 <app-timeline [firstCard]="firstCard"></app-timeline>
-<app-card-deck #cardDeck (firstcardEmitter)="onReceiveFirstcard($event)"></app-card-deck>>
-<app-hand></app-hand>
 
-
-
-<!-- 
-
-<button (click)="cardDeck.pickRandomCard">PIOCHE</button>
-<app-timer></app-timer>
-<app-timeline [firstCardTime]="firstCardGame"></app-timeline>
-<app-card-deck #cardDeck (firstcardDeckEmitter)=”onReceiveFirstcardDeck($event)”></app-card-deck>>
-<app-hand></app-hand>
-
--->
+<div class="bottom-menu">
+  <app-card-deck #cardDeck (firstcardEmitter)="onReceiveFirstcard($event)"></app-card-deck>
+  <app-hand></app-hand>
+</div>
+<button [routerLink]='[""]'><img src="../../assets/img/fleche.png"></button>

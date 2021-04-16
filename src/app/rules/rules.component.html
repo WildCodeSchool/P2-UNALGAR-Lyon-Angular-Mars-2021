@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,43 +10,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <title>Unaglar Timeline</title>
 </head>
- 
-<body>
-   
-     <div class="rules">
-        <h2>REGLES</h2>
-         <p>1.On a un deck de 100 cartes mélangées<br><br>
 
-            2.Le joueur débute le jeu <br>
-            > une première carte (carte 1) avec date révélée est placée sur la timelinec
+<body>
+
+    <div class="rules">
+        <h2>REGLES</h2>
+
+        <p>Il y a un deck de 100 cartes mélangées<br><br>
+
+            Le joueur débute le jeu <br>
+            > une première carte (carte 1) avec une date révélée est placée sur la timeline. <br>
             > le joueur pioche une carte (carte 2)<br>
             > le timer démarre (5min, décroissant)<br><br>
 
-            3.Le joueur place la carte 2 avant ou après la carte 1<br><br>
+            Le joueur place la carte 2 avant ou après la carte 1<br><br>
 
-            4.Le joueur valide son choix :<br>
+            Le joueur valide son choix :<br>
             la date de la carte 2 est révélée<br>
             le jeu valide ou non la position<br><br>
 
-            5.1 Erreur : <br>
-                - pénalité du temps + 2 secondes<br>
-                - la carte révélée disparaît et n’est plus dans la pioche<br>
-            5.2 Si validé :<br>
-                - la carte reste sur la timeline <br>
-                - le joueur peut piocher une autre carte<br><br>
+            Si la position est fausse : <br>
+            - une pénalité du temps de 2 secondes est réalisée sur le timer<br>
+            - la carte révélée disparaît et n’est plus dans la pioche<br>
+            Si la position est validée :<br>
+            - la carte reste sur la timeline <br>
+            - le joueur peut piocher une autre carte<br><br>
 
-            6.Le joueur pioche une autre carte (carte 3) et la place entre les 2 cartes qui lui semblent le plus pertinent<br><br>
+            Le joueur pioche une autre carte (carte 3) et la place entre les 2 cartes qui lui semblent le plus
+            pertinent<br><br>
 
-            7.Le jeu se termine quand le chrono est terminé ou quand toutes les cartes ont été posées<br><br>
+            Le jeu se termine quand le chrono est terminé ou quand toutes les cartes ont été posées<br><br>
 
-            8.Le joueur voit son score (nombre de cartes bien placées en temps imparti)<br><br>
+            Le joueur voit son score (nombre de cartes bien placées en temps imparti)<br><br>
 
-            9.Le joueur peut rejouer<br><br>
+            Le joueur peut rejouer<br><br>
 
-        <button [routerLink]='[""]'><img src="../../assets/img/fleche.png"></button>
+            <button [routerLink]='[""]'><img src="../../assets/img/fleche.png"></button>
 
-     </div>
-       
-   
- </body>
+    </div>
+
+</body>
+
 </html>
+
+<!-- Réécriture des règles
+    
+    <p>Bienvenue dans Unalgar, le jeu qui vous fait traverser l'histoire ! <br>
+            Pour réussir le jeu, vous devez piocher des images qui feront référence à des évènements historiques et les placer sur une timeline, une frise chronologique. <br>
+            Piochez et placer votre carte sur la timeline, par rapport à la carte déjà présente : <br>
+            - à gauche si vous pensez que l'évènement de la carte s'est produit avant <br>
+            - à droite si vous pensez que l'évènement s'est produit après. <br>
+            Quand vous êtes sûr de votre choix, validez votre position à l'aide du bouton qui apparaît. <br>
+            Vous aurez 5 minutes seulement pour jouer ! Placez un maximum de cartes et découvrez votre score ! <br>
+            <br>
+            BON JEU !
+        </p>-->
