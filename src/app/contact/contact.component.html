@@ -10,7 +10,7 @@
 
   <h2>Pour plus d'informations</h2>
 
-  <form (ngSubmit)="form.valid" #form="ngForm">
+  <form (ngSubmit)="form.valid && onSubmit()" #myForm="ngForm" #form="ngForm">
 
     <div class="form-item">
       <label for="lastname-user">Lastname</label>
@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <button (click)="alert()" type="submit">Submit</button>
+    <button type="submit">Submit</button>
 
     <div *ngIf="form.submitted && form.invalid">
       <span>*Le formulaire n'est pas rempli correctement</span>

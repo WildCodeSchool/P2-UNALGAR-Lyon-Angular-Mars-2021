@@ -13,7 +13,7 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  alert() {
+  onSubmit() {
     window.alert("Votre message a bien été envoyé!");
   }
 }
