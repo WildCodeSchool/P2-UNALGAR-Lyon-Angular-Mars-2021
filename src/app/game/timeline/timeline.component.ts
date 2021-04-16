@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Card } from "../../common/card.model";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-timeline",
@@ -8,8 +7,6 @@ import { Card } from "../../common/card.model";
 })
 export class TimelineComponent implements OnInit {
   constructor() {}
-
-  @Input() firstCard: Card;
 
   ngOnInit(): void {}
 }
