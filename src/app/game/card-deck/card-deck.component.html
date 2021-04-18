@@ -1,1 +1,12 @@
-<button (click)="pickRandomCard()">Pioche</button>
+<button>(click)="pickFirstCard()">START PLAYING</button>
+<button (click)="pickPlayingCard()">Pioche</button>
+
+<!--Utiliser des ng template pour faire apparaître le bouton startplaying quand le jeu pas commencé puis le bouton pioche
+
+Ai tenté : 
+
+<div *ngIf="gameNotStarted; else gameStarted"><button (click)="pickFirstCard()">START PLAYING</button></div>
+<ng-template #gameStarted><button (click)="pickPlayingCard()">Pioche</button>
+</ng-template>
+
+mais ne marche pas -->

@@ -6,7 +6,7 @@ import { Card } from "../../common/card.model";
   styleUrls: ["./hand.component.css"],
 })
 export class HandComponent implements OnInit {
-  @Input() firstCard: Card;
+  @Input() playingCard: Card;
 
   constructor() {}
 

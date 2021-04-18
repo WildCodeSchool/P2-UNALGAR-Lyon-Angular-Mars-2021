@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output } from "@angular/core";
 import { TimerComponent } from "./timer/timer.component";
 import { TimelineComponent } from "./timeline/timeline.component";
 import { CardDeckComponent } from "./card-deck/card-deck.component";
@@ -14,11 +14,18 @@ import { Card } from "../common/card.model";
 export class GameComponent implements OnInit {
   constructor() {}
 
+  playingCard: Card;
   firstCard: Card;
 
   ngOnInit(): void {}
 
-  onReceiveFirstcard($event: Card) {
+  onReceiveplayingCard($event: Card) {
+    console.log($event);
+    this.playingCard = $event;
+    console.log(this.playingCard);
+  }
+
+  onReceivefirstCard($event: Card) {
     this.firstCard = $event;
   }
 }

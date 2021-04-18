@@ -6,7 +6,10 @@ import { Card } from "../../common/card.model";
   styleUrls: ["./card-deck.component.css"],
 })
 export class CardDeckComponent implements OnInit {
+  playingCard: Card;
   firstCard: Card;
+  gameNotStarted: boolean = true;
+
   cardDeck: Card[] = [
     { title: "Début de la 2nde guerre mondiale", date: 1939, img: "" },
     { title: "Election de Nicolas Sarkozy", date: 2007, img: "" },
@@ -14,20 +17,37 @@ export class CardDeckComponent implements OnInit {
     { title: "Révolution française", date: 1789, img: "" },
   ];
 
-  @Output() firstcardEmitter: EventEmitter<Card> = new EventEmitter();
+  //Envoie la 1ère carte du jeu
+  @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
 
-  sendingfirstcard() {
-    this.firstcardEmitter.emit(this.firstCard);
+  sendingfirstCard() {
+    this.firstCardEmitter.emit(this.firstCard);
+  }
+
+  //Envoie la carte en cours
+  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
+
+  sendingplayingCard() {
+    this.playingCardEmitter.emit(this.playingCard);
   }
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  pickRandomCard() {
+  pickFirstCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.firstCard = this.cardDeck[randomIndex];
-    /* NE MARCHE PAS this.cardDeck = this.cardDeck.splice(randomIndex, 1); */
-    this.sendingfirstcard();
+    /*     this.cardDeck=this.cardDeck.splice(randomIndex, 1); NE MARCHE PAS*/
+    this.sendingfirstCard();
+    this.gameNotStarted = false;
+  }
+
+  pickPlayingCard() {
+    let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
+    this.playingCard = this.cardDeck[randomIndex];
+    console.log(this.playingCard);
+    /*     this.cardDeck=this.cardDeck.splice(randomIndex, 1); NE MARCHE PAS*/
+    this.sendingplayingCard();
   }
 }
