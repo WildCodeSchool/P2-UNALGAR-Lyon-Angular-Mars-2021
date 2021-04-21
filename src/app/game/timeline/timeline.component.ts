@@ -21,4 +21,8 @@ export class TimelineComponent implements OnInit {
   @Input() firstCard: Card;
 
   ngOnInit(): void {}
+
+  alert(card: Card) {
+    alert(`hello ${card.title}`);
+  }
 }

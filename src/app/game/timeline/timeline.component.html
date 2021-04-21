@@ -3,19 +3,19 @@
 
     <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
 
-        <li class="emptySpace"></li>
+        <li (click)="alert(card)" class="emptySpace"></li>
 
-        <div #validation *ngIf="cardSetted">✔</div>
+        <div class="validation" *ngIf="cardSetted">✔</div>
 
         <li class="timelineCard">{{card.title}}</li>
 
         <div *ngIf="last">
-            <li class="emptySpace"></li>
-            <div #validation *ngIf="cardSetted">✔</div>
+            <li (click)="alert(card)" class="emptySpace"></li>
+            <div class="validation" *ngIf="cardSetted">✔</div>
         </div>
 
     </div>
-    
+
 </ul>
 
 
