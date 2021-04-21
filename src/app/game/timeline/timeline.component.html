@@ -1,11 +1,9 @@
 <h1>Place your card on the timeline</h1>
 <div id="scroll-progress"></div>
 <ul class="scroller">
-    <div *ngFor="let card of timelineDeck" class="timelineDiv">
+    <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
         <li class="emptySpace"></li>
         <li class="timelineCard">{{card.title}}</li>
-        <li class="emptySpace" *ngIf="lastItem"></li>
-        <!-- piste pour placer un emptyspace quand c'est la dernière carte du timelineDeck : *ngIf="timelineDeck.findIndex(card) === this.timelineDeck[timelineDeck.length - 1]"
-            -->
+        <li class="emptySpace" *ngIf="last"></li>
     </div>
 </ul>
