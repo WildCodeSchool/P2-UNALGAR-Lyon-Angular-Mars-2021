@@ -9,7 +9,10 @@
   display: none;
 }
 
-#scroller {
+.scroller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -17,10 +20,10 @@
   white-space: nowrap;
 }
 
-#scroller li {
+.timelineCard {
   background: #b0bec5;
   color: #fff;
-  display: inline-block;
+  display: flex;
   font-size: 20px;
   font-weight: bold;
   height: 200px;
@@ -35,4 +38,16 @@ li {
 
 h1 {
   text-align: center;
+}
+
+.timelineDiv {
+  display: flex;
+  align-items: center;
+}
+
+.emptySpace {
+  background: wheat;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
 }
