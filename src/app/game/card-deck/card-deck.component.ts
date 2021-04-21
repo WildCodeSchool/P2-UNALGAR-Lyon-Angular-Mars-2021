@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { DeckService } from "src/app/common/deck.service";
 import { Card } from "../../common/card.model";
 @Component({
   selector: "app-card-deck",
@@ -10,12 +11,22 @@ export class CardDeckComponent implements OnInit {
   firstCard: Card;
   hasGameStarted: boolean = false;
 
-  cardDeck: Card[] = [
-    { title: "Début de la 2nde guerre mondiale", date: 1939, img: "" },
-    { title: "Election de Nicolas Sarkozy", date: 2007, img: "" },
-    { title: "Premiers pas sur la lune", date: 1969, img: "" },
-    { title: "Révolution française", date: 1789, img: "" },
-  ];
+  // DECLARATION DU SERVICE
+
+  public cardDeck: Card[] = [];
+  private service: DeckService;
+
+  constructor(param_service: DeckService) {
+    this.service = param_service;
+  }
+
+  ngOnInit(): void {
+    this.service.getCardDeck().subscribe((param_cardDeck: Card[]) => {
+      this.cardDeck = param_cardDeck;
+    });
+  }
+
+  //
 
   //Envoie la 1ère carte du jeu
   @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
@@ -30,10 +41,6 @@ export class CardDeckComponent implements OnInit {
   sendingplayingCard() {
     this.playingCardEmitter.emit(this.playingCard);
   }
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   pickFirstCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
