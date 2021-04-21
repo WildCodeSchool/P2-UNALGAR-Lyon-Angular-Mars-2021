@@ -7,9 +7,8 @@ import { Card } from "../../common/card.model";
   styleUrls: ["./timeline.component.css"],
 })
 export class TimelineComponent implements OnInit {
-  constructor() {}
-
   @Input() firstCard: Card;
+  constructor() {}
 
   ngOnInit(): void {}
 }
