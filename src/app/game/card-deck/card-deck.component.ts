@@ -8,7 +8,7 @@ import { Card } from "../../common/card.model";
 export class CardDeckComponent implements OnInit {
   playingCard: Card;
   firstCard: Card;
-  gameNotStarted: boolean = true;
+  hasGameStarted: boolean = false;
 
   cardDeck: Card[] = [
     { title: "Début de la 2nde guerre mondiale", date: 1939, img: "" },
@@ -40,7 +40,7 @@ export class CardDeckComponent implements OnInit {
     this.firstCard = this.cardDeck[randomIndex];
     /*     this.cardDeck=this.cardDeck.splice(randomIndex, 1); NE MARCHE PAS*/
     this.sendingfirstCard();
-    this.gameNotStarted = false;
+    this.hasGameStarted = true;
   }
 
   pickPlayingCard() {
