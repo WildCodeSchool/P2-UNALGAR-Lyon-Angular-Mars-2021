@@ -16,9 +16,9 @@ export class TimelineComponent implements OnInit {
 
   public cardSetted: boolean = false;
 
-  constructor() {}
-
   @Input() firstCard: Card;
+  
+  constructor() {}
 
   ngOnInit(): void {}
 }
