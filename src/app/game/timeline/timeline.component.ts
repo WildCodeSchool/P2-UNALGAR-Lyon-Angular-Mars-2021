@@ -14,7 +14,7 @@ export class TimelineComponent implements OnInit {
     { title: "Révolution française", date: 1789, img: "" },
   ];
 
-  public lastItem: boolean = false;
+  public cardSetted: boolean = false;
 
   constructor() {}
 

@@ -1,9 +1,24 @@
 <h1>Place your card on the timeline</h1>
-<div id="scroll-progress"></div>
 <ul class="scroller">
+
     <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
+
         <li class="emptySpace"></li>
+
+        <div #validation *ngIf="cardSetted">✔</div>
+
         <li class="timelineCard">{{card.title}}</li>
-        <li class="emptySpace" *ngIf="last"></li>
+
+        <div *ngIf="last">
+            <li class="emptySpace"></li>
+            <div #validation *ngIf="cardSetted">✔</div>
+        </div>
+
     </div>
+    
 </ul>
+
+
+<!-- 
+li (click) ="function qui fait X"
+-->
