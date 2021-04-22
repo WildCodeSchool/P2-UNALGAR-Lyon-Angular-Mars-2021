@@ -9,6 +9,14 @@
   background-color: wheat;
 }
 
+.firstTimeline {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  height: 200px;
+  background-color: wheat;
+}
+
 .timelineCard {
   background: #b0bec5;
   color: #fff;

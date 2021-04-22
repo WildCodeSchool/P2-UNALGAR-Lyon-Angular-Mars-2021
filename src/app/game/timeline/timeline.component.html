@@ -1,24 +1,22 @@
 <h1>Place your card on the timeline</h1>
+
+<div class="firstTimeline" *ngIf="!hasGameStarted"></div>
+
 <ul class="scroller">
 
     <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
 
-        <li (click)="alert(card)" class="emptySpace"></li>
+        <li (click)="alert()" class="emptySpace"></li>
 
         <div class="validation" *ngIf="cardSetted">✔</div>
 
         <li class="timelineCard">{{card.title}}</li>
 
         <div *ngIf="last">
-            <li (click)="alert(card)" class="emptySpace"></li>
+            <li (click)="alert()" class="emptySpace"></li>
             <div class="validation" *ngIf="cardSetted">✔</div>
         </div>
 
     </div>
 
 </ul>
-
-
-<!-- 
-li (click) ="function qui fait X"
--->
