@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { TimerComponent } from "./timer/timer.component";
 import { TimelineComponent } from "./timeline/timeline.component";
 import { CardDeckComponent } from "./card-deck/card-deck.component";
@@ -36,4 +36,5 @@ export class GameComponent implements OnInit {
     this.firstCard = $event;
     /*this.timelineDeck.push(this.firstCard);*/
   }
+
 }
