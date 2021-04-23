@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { DeckService } from "src/app/common/deck.service";
+import { GameService } from "src/app/common/game.service";
 import { Card } from "../../common/card.model";
 
 @Component({
@@ -7,18 +9,33 @@ import { Card } from "../../common/card.model";
   styleUrls: ["./timeline.component.css"],
 })
 export class TimelineComponent implements OnInit {
-  public timelineDeck: Card[] = [
-    { title: "Début de la 2nde guerre mondiale", date: 1939, img: "" },
-    { title: "Election de Nicolas Sarkozy", date: 2007, img: "" },
-    { title: "Premiers pas sur la lune", date: 1969, img: "" },
-    { title: "Révolution française", date: 1789, img: "" },
-  ];
+  //Initialisation des valeurs
 
+  public timelineDeck: Card[] = [];
   public cardSetted: boolean = false;
 
-  @Input() firstCard: Card;
-  
-  constructor() {}
+  /*public hasGameStarted: boolean;*/
 
-  ngOnInit(): void {}
+  /*@Input() firstCard: Card;*/
+  @Input() playingCard: Card;
+
+  // DECLARATION DES SERVICES
+
+  private deckService: DeckService;
+  private gameService: GameService;
+
+  constructor(param_service: DeckService, param_service2: GameService) {
+    this.deckService = param_service;
+    this.gameService = param_service2;
+  }
+
+  ngOnInit(): void {
+    this.timelineDeck = this.gameService.getTimelineDeck();
+    /*    this.hasGameStarted = this.gameService.hasGameStarted;
+    comment faire pour que ça ne soit pas que OnInit, pour que quand hasGameStarted change dans game.service.ts, il change aussi dans timeline.ts ??*/
+  }
+
+  alert() {
+    alert(`Etes-vous sûr de vouloir poser votre carte ici ?`);
+  }
 }
