@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { DeckService } from "src/app/common/deck.service";
 import { Card } from "../../common/card.model";
 import { GameService } from "src/app/common/game.service";
+
 @Component({
   selector: "app-card-deck",
   templateUrl: "./card-deck.component.html",
@@ -9,6 +10,9 @@ import { GameService } from "src/app/common/game.service";
 })
 export class CardDeckComponent implements OnInit {
   //Initialisation des variables
+  
+  timer: string;
+  @Output() lancementTimer: EventEmitter<string> = new EventEmitter();
   playingCard: Card;
   firstCard: Card;
   hasGameStarted: boolean = false;
@@ -59,5 +63,9 @@ export class CardDeckComponent implements OnInit {
     this.playingCard = this.cardDeck[randomIndex];
     this.cardDeck.splice(randomIndex, 1);
     this.sendingplayingCard();
+  }
+
+  startTimer() {
+    this.lancementTimer.emit(this.timer);
   }
 }
