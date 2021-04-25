@@ -1,7 +1,14 @@
-span {
-  margin: auto;
-  width: 200px;
+.timer {
+  font-size: 40px;
   display: block;
-  font-size: 50px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
+}
+span {
+margin: auto;
+width: 200px;
+display: block;
+font-size: 50px;
+text-align: center;
 }

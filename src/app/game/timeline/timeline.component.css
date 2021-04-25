@@ -42,7 +42,7 @@ h1 {
   margin: 10px;
 }
 
-#validation {
+.validation {
   background-color: green;
   border-radius: 50%;
   border: 1px solid grey;
@@ -50,3 +50,4 @@ h1 {
   height: 60px;
   cursor: pointer;
 }
+

@@ -1,21 +1,40 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { DeckService } from "src/app/common/deck.service";
 import { Card } from "../../common/card.model";
+import { GameService } from "src/app/common/game.service";
+
 @Component({
   selector: "app-card-deck",
   templateUrl: "./card-deck.component.html",
   styleUrls: ["./card-deck.component.css"],
 })
 export class CardDeckComponent implements OnInit {
+  //Initialisation des variables
+  
+  timer: string;
+  @Output() lancementTimer: EventEmitter<string> = new EventEmitter();
   playingCard: Card;
   firstCard: Card;
-  gameNotStarted: boolean = true;
+  hasGameStarted: boolean = false;
+  public cardDeck: Card[] = [];
 
-  cardDeck: Card[] = [
-    { title: "Début de la 2nde guerre mondiale", date: 1939, img: "" },
-    { title: "Election de Nicolas Sarkozy", date: 2007, img: "" },
-    { title: "Premiers pas sur la lune", date: 1969, img: "" },
-    { title: "Révolution française", date: 1789, img: "" },
-  ];
+  // DECLARATION DES SERVICES
+
+  private deckService: DeckService;
+  private gameService: GameService;
+
+  constructor(param_service: DeckService, param_service2: GameService) {
+    this.deckService = param_service;
+    this.gameService = param_service2;
+  }
+
+  // INITIALISATION DES SERVICES
+
+  ngOnInit(): void {
+    this.deckService.getCardDeck().subscribe((param_cardDeck: Card[]) => {
+      this.cardDeck = param_cardDeck;
+    });
+  }
 
   //Envoie la 1ère carte du jeu
   @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
@@ -31,23 +50,22 @@ export class CardDeckComponent implements OnInit {
     this.playingCardEmitter.emit(this.playingCard);
   }
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
   pickFirstCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.firstCard = this.cardDeck[randomIndex];
-    /*     this.cardDeck=this.cardDeck.splice(randomIndex, 1); NE MARCHE PAS*/
-    this.sendingfirstCard();
-    this.gameNotStarted = false;
+    this.cardDeck.splice(randomIndex, 1);
+    this.gameService.addCardToTimeline(this.firstCard);
+    this.hasGameStarted = true;
   }
 
   pickPlayingCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.playingCard = this.cardDeck[randomIndex];
-    console.log(this.playingCard);
-    /*     this.cardDeck=this.cardDeck.splice(randomIndex, 1); NE MARCHE PAS*/
+    this.cardDeck.splice(randomIndex, 1);
     this.sendingplayingCard();
+  }
+
+  startTimer() {
+    this.lancementTimer.emit(this.timer);
   }
 }
