@@ -1,21 +1,8 @@
 <app-timer></app-timer>
-<app-timeline></app-timeline>
+<app-timeline [playingCard]="playingCard"></app-timeline>
 <div class="bottom-menu">
   <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)"
     (firstCardEmitter)="onReceivefirstCard($event)"></app-card-deck>
   <app-hand [playingCard]="playingCard"></app-hand>
 </div>
 <button [routerLink]='[""]'><img src="../../assets/img/leftArrow1.png"></button>
-
-
-<!-- 
- <app-timer></app-timer>
-<app-timeline [firstCard]="firstCard"></app-timeline>
-<div class="bottom-menu">
-  <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)"
-    (firstCardEmitter)="onReceivefirstCard($event)"></app-card-deck>
-  <app-hand [playingCard]="playingCard"></app-hand>
-</div>
-<button [routerLink]='[""]'><img src="../../assets/img/fleche.png"></button>
-
--->

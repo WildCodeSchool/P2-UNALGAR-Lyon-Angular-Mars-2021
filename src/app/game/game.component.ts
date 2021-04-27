@@ -33,7 +33,5 @@ export class GameComponent implements OnInit {
 
   onReceivefirstCard($event: Card) {
     this.firstCard = $event;
-    /*this.timelineDeck.push(this.firstCard);*/
   }
-
 }

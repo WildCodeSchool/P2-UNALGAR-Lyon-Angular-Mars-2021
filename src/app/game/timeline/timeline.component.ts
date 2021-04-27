@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { DeckService } from "src/app/common/deck.service";
 import { GameService } from "src/app/common/game.service";
 import { Card } from "../../common/card.model";
@@ -14,9 +14,6 @@ export class TimelineComponent implements OnInit {
   public timelineDeck: Card[] = [];
   public cardSetted: boolean = false;
 
-  /*public hasGameStarted: boolean;*/
-
-  /*@Input() firstCard: Card;*/
   @Input() playingCard: Card;
 
   // DECLARATION DES SERVICES
@@ -35,7 +32,9 @@ export class TimelineComponent implements OnInit {
     comment faire pour que ça ne soit pas que OnInit, pour que quand hasGameStarted change dans game.service.ts, il change aussi dans timeline.ts ??*/
   }
 
-  alert() {
-    alert(`Etes-vous sûr de vouloir poser votre carte ici ?`);
+  @Output() rightClick: EventEmitter<any> = new EventEmitter();
+
+  addToTimeline() {
+    this.gameService.addCardToTimeline(this.playingCard);
   }
 }
