@@ -6,8 +6,6 @@
 
         <li (click)="addToTimelineLeftSide(card)" class="emptySpace"></li>
 
-        <div class="validation" *ngIf="cardSetted">✔</div>
-
         <li class="timelineCard">
             <img [src]="card.img" alt="">
             <p>{{card.title}}</p>
@@ -16,9 +14,13 @@
 
         <div *ngIf="last">
             <li (click)="addToTimelineRightSide(card)" class="emptySpace"></li>
-            <div class="validation" *ngIf="cardSetted">✔</div>
         </div>
 
     </div>
 
 </ul>
+
+<div class="validation" *ngIf="cardSetted">
+    <label for="position">Validez-vous cette position ?</label>
+    <input type="checkbox">
+</div>

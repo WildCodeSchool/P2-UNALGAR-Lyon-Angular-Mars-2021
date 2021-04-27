@@ -48,5 +48,6 @@ export class TimelineComponent implements OnInit {
     //On définit ce que sera l'indice de playingCard dans la timeline
     let playingCardIndex: number = rightCardIndex;
     this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
+    this.cardSetted = true;
   }
 }
