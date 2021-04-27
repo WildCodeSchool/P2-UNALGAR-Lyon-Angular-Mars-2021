@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="contact.component.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <title>Unaglar Timeline</title>
-</head>
 
 <body>
 
 <div class="flex-container">
 
-  <img src="../../assets/img/teamU.png" alt="Unalgar team with logo">
+  <img [src]="imageLogoTeam" [alt]="''">
 
 
 
     <!---------------------------Qui Sommes Nous? ----------------->
 
-  <h2>Who are we?</h2>
+  <h2>Qui sommes nous?</h2>
 
   <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. 
     Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla 
@@ -33,12 +21,12 @@
       <!---------------------------Nous Contacter ----------------->
 
 
-  <h2>Contact us</h2>
+  <h2>Adresse</h2>
 
-  <p>WILD CODE SCHOOL <br>
-    17 Rue DELANDINE <br>
-    69002 LYON <br>
-    06 40 95 24 24</p>
+  <p>{{nom}} <br>
+    {{adress.street}}<br>
+    {{adress.city}} <br>
+    {{telephoneNumber}}</p>
 
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.2488541080365!2d4.825337515932395!3d45.746156779105334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea4ab96b2285%3A0xd07b1fb24dc8242f!2s17%20Rue%20Delandine%2C%2069002%20Lyon!5e0!3m2!1sfr!2sfr!4v1619079493456!5m2!1sfr!2sfr"
      width="700" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -48,26 +36,26 @@
        <!---------------------------Nous Retrouver ----------------->
 
 
-  <h2>Find on</h2>
+  <h2>Nous retrouvez</h2>
 
   <div>
-    <img class="logo" src="../../assets/img/fb.png" alt="fb">
-    <img class="logo" src="../../assets/img/twit.png" alt="twit">
-    <img class="logo" src="../../assets/img/inst.png" alt="inst">
-    <img class="logo" src="../../assets/img/git.png" alt="git">
+    <img class="logo" [src]="imageFb" [alt]="''">
+    <img class="logo" [src]="imageTwitter" [alt]="''">
+    <img class="logo" [src]="imageInstagram" [alt]="''">
+    <img class="logo" [src]="imageGithub" [alt]="''">
   </div>
 
 
     <!--------------------------- Formulaire ----------------->
 
 
-  <h2>More informations</h2>
+  <h2>Pour plus d'informations</h2>
 
   <form (ngSubmit)="form.valid && onSubmit()" #myForm="ngForm" #form="ngForm">
 
   <div class="formAlign">
     <div class="form-item">
-      <label for="lastname-user">Lastname</label>
+      <label for="lastname-user">Nom</label>
       <input type="text" name="lastname" [(ngModel)]="user.lastname" required minlength="3" maxlength="15"
         #lastname="ngModel" size="20"/>
       <div *ngIf="form.submitted && lastname.errors">
@@ -77,7 +65,7 @@
     </div>
 
     <div class="form-item">
-      <label for="firstname-user">Firstname</label>
+      <label for="firstname-user">Prénom</label>
       <input type="text" name="firstname" [(ngModel)]="user.firstname" required minlength="3" maxlength="15"
         #firstname="ngModel" size="20" />
       <div *ngIf="form.submitted && firstname.errors">
@@ -88,7 +76,7 @@
   </div>
 
     <div class="form-item">
-      <label for="mail-user">@Mail</label>
+      <label for="mail-user">@E-Mail</label>
       <input type="mail" name="mail" [(ngModel)]="user.mail" required email #mail="ngModel" size="50"/>
       <div *ngIf="form.submitted && mail.errors">
         <span *ngIf="mail.errors?.required">*Le mail est requis</span>
@@ -98,13 +86,13 @@
 
     <div class="form-item">
       <label for="message-user">Message</label>
-      <input type="textarea" name="message-user" [(ngModel)]="user.message" required #message="ngModel" size="50"  />
+      <textarea type="textarea" name="message-user" [(ngModel)]="user.message" required #message="ngModel"></textarea>
       <div *ngIf="form.submitted && message.errors">
         <span *ngIf="message.errors?.required">*Merci de remplir votre message</span>
       </div>
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit">Envoyer</button>
 
     <div *ngIf="form.submitted && form.invalid">
       <span>*Le formulaire n'est pas rempli correctement</span>
@@ -112,10 +100,9 @@
 
   </form>
 
-  <button [routerLink]='[""]'><img class="return" src="../../assets/img/fleche.png"></button>
+  <button [routerLink]='[""]'><img class="return" src="../../assets/img/leftArrow1.png"></button>
 
 </div>
 
 </body>
 
-</html>

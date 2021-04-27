@@ -7,6 +7,22 @@ import { User } from "../user";
   styleUrls: ["./contact.component.css"],
 })
 export class ContactComponent implements OnInit {
+  
+  imageLogoTeam = "../../assets/img/teamU.png";
+
+  //Adresse
+  nom: string = "Wild Code School";
+  adress: any = {street: '17 rue Delandine', city: '69002 Lyon'};
+  telephoneNumber: string = "06 40 95 24 24";
+
+  //Nous retrouvez
+
+  imageFb = "../../assets/img/fb.png";
+  imageTwitter = "../../assets/img/twit.png";
+  imageInstagram = "../../assets/img/inst.png";
+  imageGithub = "../../assets/img/git.png";
+
+
   user: User = new User();
 
   constructor() {}

@@ -1,57 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="rules.component.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <title>Unaglar Timeline</title>
-</head>
 
 <body>
 
     <div class="rules">
         <h2>REGLES</h2>
 
+        
         <p>Il y a un deck de 100 cartes mélangées<br><br>
+        <div class="partie">
+            <div class="partie1">
+                Le joueur débute le jeu <br><br>
+                <img class="rightArrow" [src]="imageButton" [alt]="''"> Une première carte (carte 1) avec une date révélée est placée sur la timeline. <br>
+                <img class="rightArrow" [src]="imageButton" [alt]="''"> Le joueur pioche une carte (carte 2)<br>
+                <img class="rightArrow" [src]="imageButton" [alt]="''"> Le timer démarre (5min, décroissant)<br><br>
+            </div>
+                <img class="tailleRegle" [src]="imageGame1" [alt]="''">
+        </div><br><br>
 
-            Le joueur débute le jeu <br>
-            > une première carte (carte 1) avec une date révélée est placée sur la timeline. <br>
-            > le joueur pioche une carte (carte 2)<br>
-            > le timer démarre (5min, décroissant)<br><br>
 
-            Le joueur place la carte 2 avant ou après la carte 1<br><br>
+        <div class="partie">
+            <div class="partie1">
+                Le joueur place la carte 2 avant ou après la carte 1<br><br>
 
-            Le joueur valide son choix :<br>
-            la date de la carte 2 est révélée<br>
-            le jeu valide ou non la position<br><br>
+                Le joueur valide son choix :<br>
+            <img class="rightArrow" [src]="imageButton" [alt]="''"> La date de la carte 2 est révélée<br>
+            <img class="rightArrow" [src]="imageButton" [alt]="''"> Le jeu valide ou non la position<br><br>
+            </div>
+            <img class="tailleRegle" [src]="imageGame3" [alt]="''">
+        </div><br><br>
 
-            Si la position est fausse : <br>
-            - une pénalité du temps de 2 secondes est réalisée sur le timer<br>
-            - la carte révélée disparaît et n’est plus dans la pioche<br>
-            Si la position est validée :<br>
-            - la carte reste sur la timeline <br>
-            - le joueur peut piocher une autre carte<br><br>
+            <div class="partie">
+                <div class="partie1">
+                Si la position est <span style="color: red;">Incorrecte</span> : <br>
+                <img class="rightArrow" [src]="imageButton" [alt]="''"> Une pénalité du temps de 2 secondes est réalisée sur le timer<br>
+                <img class="rightArrow" [src]="imageButton" [alt]="''"> La carte révélée disparaît et n’est plus dans la pioche<br><br>
+            </div>
+            <img class="tailleRegle" [src]="imageGame5" [alt]="''">
+        </div><br><br>
+            
+            
+            <div class="partie">
+                <div class="partie1">
+                Si la position est <span style="color: green;">Correcte</span> :<br>
+            <img class="rightArrow" [src]="imageButton" [alt]="''"> La carte reste sur la timeline <br>
+            <img class="rightArrow" [src]="imageButton" [alt]="''"> Le joueur peut piocher une autre carte<br><br>
+            </div>
+            <img class="tailleRegle" [src]="imageGame4" [alt]="''">
+        </div><br><br>
 
-            Le joueur pioche une autre carte (carte 3) et la place entre les 2 cartes qui lui semblent le plus
-            pertinent<br><br>
+        <div class="partie">
+            <div class="partie1">
+                Le joueur pioche une autre carte et la place à la position qui lui semblent le plus
+                pertinent
+            </div>
+            <img class="tailleRegle" [src]="imageGame8" [alt]="''">
+        </div><br><br>
 
-            Le jeu se termine quand le chrono est terminé ou quand toutes les cartes ont été posées<br><br>
+        <div class="partie">
+            <div class="partie1">
+                Le jeu se termine quand le chrono est terminé ou quand toutes les cartes ont été posées<br><br>
 
-            Le joueur voit son score (nombre de cartes bien placées en temps imparti)<br><br>
+                Le joueur voit son score (nombre de cartes bien placées en temps imparti)<br><br>
 
-            Le joueur peut rejouer<br><br>
+                Le joueur peut rejouer
+            </div>
+            <img class="tailleRegle" [src]="imageGame7" [alt]="''">
+        </div><br><br>
 
-            <button [routerLink]='[""]'><img src="../../assets/img/fleche.png"></button>
+
+            <button [routerLink]='[""]'><img class ="leftArrow" src="../../assets/img/leftArrow1.png" [alt]="''"></button>
 
     </div>
 
 </body>
 
-</html>
+
 
 <!-- Réécriture des règles
     
