@@ -46,7 +46,7 @@ export class TimelineComponent implements OnInit {
     // On va chercher l'indice de la carte à gauche de l'emplacement choisi
     let rightCardIndex: number = this.timelineDeck.indexOf(card);
     //On définit ce que sera l'indice de playingCard dans la timeline
-    let playingCardIndex: number = rightCardIndex - 1;
+    let playingCardIndex: number = rightCardIndex;
     this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
   }
 }
