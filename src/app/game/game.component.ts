@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { TimerComponent } from "./timer/timer.component";
 import { TimelineComponent } from "./timeline/timeline.component";
 import { CardDeckComponent } from "./card-deck/card-deck.component";
-import { ButtonComponent } from "../common/button/button.component";
 import { HandComponent } from "./hand/hand.component";
 import { Card } from "../common/card.model";
 import { DeckService } from "../common/deck.service";

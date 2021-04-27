@@ -11,7 +11,6 @@ import { ContactComponent } from "./contact/contact.component";
 import { TimerComponent } from "./game/timer/timer.component";
 import { TimelineComponent } from "./game/timeline/timeline.component";
 import { CardDeckComponent } from "./game/card-deck/card-deck.component";
-import { ButtonComponent } from "./common/button/button.component";
 import { HandComponent } from "./game/hand/hand.component";
 import { FormsModule } from "@angular/forms";
 
@@ -25,7 +24,6 @@ import { FormsModule } from "@angular/forms";
     TimerComponent,
     TimelineComponent,
     CardDeckComponent,
-    ButtonComponent,
     HandComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
