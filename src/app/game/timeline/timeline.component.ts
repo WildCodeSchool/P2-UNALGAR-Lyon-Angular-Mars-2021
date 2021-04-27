@@ -34,7 +34,19 @@ export class TimelineComponent implements OnInit {
 
   @Output() rightClick: EventEmitter<any> = new EventEmitter();
 
-  addToTimeline() {
-    this.gameService.addCardToTimeline(this.playingCard);
+  addToTimelineRightSide(card: Card) {
+    // On va chercher l'indice de la carte à gauche de l'emplacement choisi
+    let leftCardIndex: number = this.timelineDeck.indexOf(card);
+    //On définit ce que sera l'indice de playingCard dans la timeline
+    let playingCardIndex: number = leftCardIndex + 1;
+    this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
+  }
+
+  addToTimelineLeftSide(card: Card) {
+    // On va chercher l'indice de la carte à gauche de l'emplacement choisi
+    let rightCardIndex: number = this.timelineDeck.indexOf(card);
+    //On définit ce que sera l'indice de playingCard dans la timeline
+    let playingCardIndex: number = rightCardIndex - 1;
+    this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
   }
 }
