@@ -26,21 +26,11 @@ export class CardDeckComponent implements OnInit {
     console.log(this.cardDeck);
   }
 
-  //Envoie la 1ère carte du jeu
+  // AU PREMIER CLIC
+  // > on envoie la 1ère carte du jeu dans la timeline
   @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
   sendingfirstCard() {
     this.firstCardEmitter.emit(this.firstCard);
-  }
-
-  //Lance le timer quand le joueur clique une 1ère fois sur la pioche
-  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
-
-  @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
-
-  //Envoie la carte en cours
-  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
-  sendingplayingCard() {
-    this.playingCardEmitter.emit(this.playingCard);
   }
 
   pickFirstCard() {
@@ -51,7 +41,20 @@ export class CardDeckComponent implements OnInit {
     this.hasGameStarted = true;
     this.startTimerEmitter.emit(null);
   }
+  // > on lance le timer
+  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
+  startTimer() {
+    this.lancementTimer.emit(this.timer);
+  }
 
+  //AU DEUXIEME CLIC et ensuite
+  // > on affiche le titre de playingCard
+  @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
+  // > on envoie les cartes tirées de la pioche vers la main du joueur
+  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
+  sendingplayingCard() {
+    this.playingCardEmitter.emit(this.playingCard);
+  }
   pickPlayingCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.playingCard = this.cardDeck[randomIndex];
@@ -61,9 +64,5 @@ export class CardDeckComponent implements OnInit {
     if (this.cardDeck.length === 0) {
       this.gameService.getMovies();
     }
-  }
-
-  startTimer() {
-    this.lancementTimer.emit(this.timer);
   }
 }
