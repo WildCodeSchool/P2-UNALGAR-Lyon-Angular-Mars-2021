@@ -1,9 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { MoviesService } from "src/app/common/movies.service";
 import { Card } from "../../common/card.model";
 import { GameService } from "src/app/common/game.service";
-import { Movie } from "src/app/common/movie.model";
-
 @Component({
   selector: "app-card-deck",
   templateUrl: "./card-deck.component.html",
@@ -26,21 +23,22 @@ export class CardDeckComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardDeck = this.gameService.getMovies();
+    console.log(this.cardDeck);
   }
 
   //Envoie la 1ère carte du jeu
   @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
-
-  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
-
-  @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
   sendingfirstCard() {
     this.firstCardEmitter.emit(this.firstCard);
   }
 
+  //Lance le timer quand le joueur clique une 1ère fois sur la pioche
+  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
+
+  @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
+
   //Envoie la carte en cours
   @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
-
   sendingplayingCard() {
     this.playingCardEmitter.emit(this.playingCard);
   }
@@ -60,6 +58,9 @@ export class CardDeckComponent implements OnInit {
     this.cardDeck.splice(randomIndex, 1);
     this.sendingplayingCard();
     this.showHandCardEmitter.emit(true);
+    if (this.cardDeck.length === 0) {
+      this.gameService.getMovies();
+    }
   }
 
   startTimer() {

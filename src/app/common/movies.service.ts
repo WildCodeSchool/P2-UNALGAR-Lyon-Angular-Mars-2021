@@ -21,7 +21,7 @@ export class MoviesService {
   public getMovies(): Observable<Movie[]> {
     this.pageCounter++;
     const movies: Observable<any> = this.service.get(
-      `${this.baseUrl}/popular?api_key=1c1ad6da4a25190317ffd7a9860d839f&language=fr-FR&page=${this.pageCounter}`
+      `${this.baseUrl}/top_rated?api_key=1c1ad6da4a25190317ffd7a9860d839f&language=fr-FR&page=${this.pageCounter}`
     );
     const treatment = (param_data: any) => {
       return param_data.results as Movie[];

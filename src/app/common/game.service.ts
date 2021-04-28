@@ -12,7 +12,9 @@ export class GameService {
   public timelineDeck: Card[] = [];
   public slicedMovieDate: string;
   public movieConverted: Card;
+  public completeMovieImgUrl: string;
 
+  //On injecte le service gérant l'API
   constructor(private moviesService: MoviesService) {}
 
   public getTimelineDeck() {
@@ -34,10 +36,11 @@ export class GameService {
 
   movieIntoCard(movie: Movie): Card {
     this.slicedMovieDate = movie.release_date.slice(0, 3);
+    this.completeMovieImgUrl = `https://image.tmdb.org/t/p/w80/${movie.poster_path}`;
     this.movieConverted = new Card(
       movie.title,
       this.slicedMovieDate,
-      movie.poster_path
+      this.completeMovieImgUrl
     );
     return this.movieConverted;
   }
