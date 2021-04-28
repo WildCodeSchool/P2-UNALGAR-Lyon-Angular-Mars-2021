@@ -7,7 +7,6 @@
         <li class="timelineCard">
             <img [src]="card.img" alt="" />
             <p>{{ card.title }}</p>
-            <p>{{ card.date }}</p>
         </li>
 
         <div *ngIf="last">
@@ -15,8 +14,3 @@
         </div>
     </div>
 </ul>
-
-<div class="validation" *ngIf="cardSetted">
-    <label for="position">Validez-vous cette position ?</label>
-    <input type="checkbox" />
-</div>

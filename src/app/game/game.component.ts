@@ -4,7 +4,7 @@ import { TimelineComponent } from "./timeline/timeline.component";
 import { CardDeckComponent } from "./card-deck/card-deck.component";
 import { HandComponent } from "./hand/hand.component";
 import { Card } from "../common/card.model";
-import { DeckService } from "../common/deck.service";
+import { MoviesService } from "../common/movies.service";
 
 @Component({
   selector: "app-game",
@@ -16,7 +16,7 @@ export class GameComponent implements OnInit {
 
   // INJECTION DU SERVICE
 
-  constructor(private deckService: DeckService) {}
+  constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {}
 

@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { DeckService } from "src/app/common/deck.service";
+import { MoviesService } from "src/app/common/movies.service";
 import { Card } from "../../common/card.model";
 import { GameService } from "src/app/common/game.service";
+import { Movie } from "src/app/common/movie.model";
 
 @Component({
   selector: "app-card-deck",
@@ -21,17 +22,10 @@ export class CardDeckComponent implements OnInit {
 
   // INJECTION DES SERVICES
 
-  constructor(
-    private deckService: DeckService,
-    private gameService: GameService
-  ) {}
-
-  // INITIALISATION DES SERVICES
+  constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.deckService.getCardDeck().subscribe((response) => {
-      this.cardDeck = response;
-    });
+    this.cardDeck = this.gameService.getMovies();
   }
 
   //Envoie la 1ère carte du jeu
