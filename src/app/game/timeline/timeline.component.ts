@@ -16,15 +16,12 @@ export class TimelineComponent implements OnInit {
 
   @Input() playingCard: Card;
 
-  // DECLARATION DES SERVICES
+  // INJECTION DES SERVICES
 
-  private deckService: DeckService;
-  private gameService: GameService;
-
-  constructor(param_service: DeckService, param_service2: GameService) {
-    this.deckService = param_service;
-    this.gameService = param_service2;
-  }
+  constructor(
+    private deckService: DeckService,
+    private gameService: GameService
+  ) {}
 
   ngOnInit(): void {
     this.timelineDeck = this.gameService.getTimelineDeck();

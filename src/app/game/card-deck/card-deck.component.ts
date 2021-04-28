@@ -10,7 +10,7 @@ import { GameService } from "src/app/common/game.service";
 })
 export class CardDeckComponent implements OnInit {
   //Initialisation des variables
-  
+
   timer: string;
   @Output() lancementTimer: EventEmitter<string> = new EventEmitter();
   playingCard: Card;
@@ -18,21 +18,18 @@ export class CardDeckComponent implements OnInit {
   hasGameStarted: boolean = false;
   public cardDeck: Card[] = [];
 
-  // DECLARATION DES SERVICES
+  // INJECTION DES SERVICES
 
-  private deckService: DeckService;
-  private gameService: GameService;
-
-  constructor(param_service: DeckService, param_service2: GameService) {
-    this.deckService = param_service;
-    this.gameService = param_service2;
-  }
+  constructor(
+    private deckService: DeckService,
+    private gameService: GameService
+  ) {}
 
   // INITIALISATION DES SERVICES
 
   ngOnInit(): void {
-    this.deckService.getCardDeck().subscribe((param_cardDeck: Card[]) => {
-      this.cardDeck = param_cardDeck;
+    this.deckService.getCardDeck().subscribe((response) => {
+      this.cardDeck = response;
     });
   }
 
