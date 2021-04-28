@@ -39,6 +39,8 @@ export class CardDeckComponent implements OnInit {
   //Envoie la 1ère carte du jeu
   @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
 
+  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
+
   sendingfirstCard() {
     this.firstCardEmitter.emit(this.firstCard);
   }
@@ -56,6 +58,7 @@ export class CardDeckComponent implements OnInit {
     this.cardDeck.splice(randomIndex, 1);
     this.gameService.addCardToTimeline(this.firstCard);
     this.hasGameStarted = true;
+    this.startTimerEmitter.emit(null);
   }
 
   pickPlayingCard() {
