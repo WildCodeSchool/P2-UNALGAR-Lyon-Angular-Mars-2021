@@ -4,6 +4,7 @@ import { GameComponent } from "./game/game.component";
 import { HomeComponent } from "./home/home.component";
 import { RulesComponent } from "./rules/rules.component";
 import { ContactComponent } from "./contact/contact.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,14 @@ const routes: Routes = [
   {
     path: "contact",
     component: ContactComponent,
+  },
+  {
+    path: "not-found",
+    component: NotFoundComponent,
+  },
+  {
+    path: "**",
+    redirectTo: "not-found"
   },
 ];
 
