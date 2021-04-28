@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 })
 export class TimerComponent implements OnInit {
   @Output() startTimerEmitter = new EventEmitter();
-  temps: number = 300;
+  temps: number = 12;
   minute: number = Math.floor(this.temps / 60);
   second: number = this.temps % 60;
   interval: any;
@@ -23,6 +23,8 @@ export class TimerComponent implements OnInit {
           this.second = 59;
         } else if (this.minute === 0 && this.second === 0) {
           clearInterval(this.interval);
+        } else if (this.second < 10) {
+         this.second;
         }
       }, 1000);
       this.lancement = true;

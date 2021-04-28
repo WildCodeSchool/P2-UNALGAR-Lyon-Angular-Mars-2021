@@ -1,9 +1,9 @@
 <app-timer #timer></app-timer>
 <app-timeline></app-timeline>
 <div class="bottom-menu">
-  <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)" (startTimerEmitter)="timer.startTimer()"
+  <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)" (startTimerEmitter)="timer.startTimer()" (showHandCardEmitter)="hand.displayHandCard()"
     (firstCardEmitter)="onReceivefirstCard($event)"></app-card-deck>
-  <app-hand [playingCard]="playingCard"></app-hand>
+  <app-hand #hand [playingCard]="playingCard"></app-hand>
 </div>
 <button [routerLink]='[""]'><img src="../../assets/img/leftArrow1.png"></button>
 
