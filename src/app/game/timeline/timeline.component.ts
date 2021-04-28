@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { DeckService } from "src/app/common/deck.service";
 import { GameService } from "src/app/common/game.service";
 import { Card } from "../../common/card.model";
@@ -14,20 +14,14 @@ export class TimelineComponent implements OnInit {
   public timelineDeck: Card[] = [];
   public cardSetted: boolean = false;
 
-  /*public hasGameStarted: boolean;*/
-
-  /*@Input() firstCard: Card;*/
   @Input() playingCard: Card;
 
-  // DECLARATION DES SERVICES
+  // INJECTION DES SERVICES
 
-  private deckService: DeckService;
-  private gameService: GameService;
-
-  constructor(param_service: DeckService, param_service2: GameService) {
-    this.deckService = param_service;
-    this.gameService = param_service2;
-  }
+  constructor(
+    private deckService: DeckService,
+    private gameService: GameService
+  ) {}
 
   ngOnInit(): void {
     this.timelineDeck = this.gameService.getTimelineDeck();
@@ -35,7 +29,22 @@ export class TimelineComponent implements OnInit {
     comment faire pour que ça ne soit pas que OnInit, pour que quand hasGameStarted change dans game.service.ts, il change aussi dans timeline.ts ??*/
   }
 
-  alert() {
-    alert(`Etes-vous sûr de vouloir poser votre carte ici ?`);
+  @Output() rightClick: EventEmitter<any> = new EventEmitter();
+
+  addToTimelineRightSide(card: Card) {
+    // On va chercher l'indice de la carte à gauche de l'emplacement choisi
+    let leftCardIndex: number = this.timelineDeck.indexOf(card);
+    //On définit ce que sera l'indice de playingCard dans la timeline
+    let playingCardIndex: number = leftCardIndex + 1;
+    this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
+  }
+
+  addToTimelineLeftSide(card: Card) {
+    // On va chercher l'indice de la carte à gauche de l'emplacement choisi
+    let rightCardIndex: number = this.timelineDeck.indexOf(card);
+    //On définit ce que sera l'indice de playingCard dans la timeline
+    let playingCardIndex: number = rightCardIndex;
+    this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
+    this.cardSetted = true;
   }
 }
