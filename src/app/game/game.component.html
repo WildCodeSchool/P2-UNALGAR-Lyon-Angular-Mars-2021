@@ -1,5 +1,5 @@
 <app-timer #timer></app-timer>
-<app-timeline></app-timeline>
+<app-timeline [playingCard]="playingCard"></app-timeline>
 <div class="bottom-menu">
   <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)" (startTimerEmitter)="timer.startTimer()"
     (firstCardEmitter)="onReceivefirstCard($event)"></app-card-deck>
