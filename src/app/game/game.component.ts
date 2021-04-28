@@ -14,13 +14,9 @@ import { DeckService } from "../common/deck.service";
 export class GameComponent implements OnInit {
   public timelineDeck: Card[] = [];
 
-  // DECLARATION DU SERVICE --- A VERIFIER AVEC PIERRE
+  // INJECTION DU SERVICE
 
-  private service: DeckService;
-
-  constructor(param_service: DeckService) {
-    this.service = param_service;
-  }
+  constructor(private deckService: DeckService) {}
 
   ngOnInit(): void {}
 
@@ -33,7 +29,5 @@ export class GameComponent implements OnInit {
 
   onReceivefirstCard($event: Card) {
     this.firstCard = $event;
-    /*this.timelineDeck.push(this.firstCard);*/
   }
-
 }

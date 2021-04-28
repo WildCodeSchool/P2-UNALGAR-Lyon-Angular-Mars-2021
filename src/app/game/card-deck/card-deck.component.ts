@@ -10,35 +10,36 @@ import { GameService } from "src/app/common/game.service";
 })
 export class CardDeckComponent implements OnInit {
   //Initialisation des variables
-  
+
   timer: string;
+  hand: string;
   @Output() lancementTimer: EventEmitter<string> = new EventEmitter();
   playingCard: Card;
   firstCard: Card;
-  hasGameStarted: boolean = false;
+  @Output() hasGameStarted: boolean = false;
   public cardDeck: Card[] = [];
 
-  // DECLARATION DES SERVICES
+  // INJECTION DES SERVICES
 
-  private deckService: DeckService;
-  private gameService: GameService;
-
-  constructor(param_service: DeckService, param_service2: GameService) {
-    this.deckService = param_service;
-    this.gameService = param_service2;
-  }
+  constructor(
+    private deckService: DeckService,
+    private gameService: GameService
+  ) {}
 
   // INITIALISATION DES SERVICES
 
   ngOnInit(): void {
-    this.deckService.getCardDeck().subscribe((param_cardDeck: Card[]) => {
-      this.cardDeck = param_cardDeck;
+    this.deckService.getCardDeck().subscribe((response) => {
+      this.cardDeck = response;
     });
   }
 
   //Envoie la 1ère carte du jeu
   @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
 
+  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
+
+  @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
   sendingfirstCard() {
     this.firstCardEmitter.emit(this.firstCard);
   }
@@ -56,6 +57,7 @@ export class CardDeckComponent implements OnInit {
     this.cardDeck.splice(randomIndex, 1);
     this.gameService.addCardToTimeline(this.firstCard);
     this.hasGameStarted = true;
+    this.startTimerEmitter.emit(null);
   }
 
   pickPlayingCard() {
@@ -63,6 +65,7 @@ export class CardDeckComponent implements OnInit {
     this.playingCard = this.cardDeck[randomIndex];
     this.cardDeck.splice(randomIndex, 1);
     this.sendingplayingCard();
+    this.showHandCardEmitter.emit(true);
   }
 
   startTimer() {

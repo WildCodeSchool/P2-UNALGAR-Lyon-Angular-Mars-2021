@@ -13,7 +13,7 @@ export class DeckService {
   
   private service: HttpClient;
 
-  
+  private baseUrl : string =  "https://api.themoviedb.org/3/movie";
   constructor(param_service: HttpClient) {
     this.service = param_service;
   }
@@ -23,7 +23,7 @@ export class DeckService {
   public getCardDeck(): Observable<Card[]> {
     const cardDeck: Observable<any> = this.service.get(
      // je vais chercher la liste des movie dans API
-      "https://api.themoviedb.org/3/movie/popular?api_key=1c1ad6da4a25190317ffd7a9860d839f&language=en-US"
+      `${this.baseUrl}/popular?api_key=1c1ad6da4a25190317ffd7a9860d839f&language=en-US`
     );
     const treatment = (param_data: any) => {
       return param_data.results as Card[];
