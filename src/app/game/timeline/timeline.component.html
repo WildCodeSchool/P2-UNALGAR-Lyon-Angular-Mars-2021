@@ -1,26 +1,22 @@
 <h1>Place your card on the timeline</h1>
 
 <ul class="scroller">
-
     <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
-
         <li (click)="addToTimelineLeftSide(card)" class="emptySpace"></li>
 
         <li class="timelineCard">
-            <img [src]="card.img" alt="">
-            <p>{{card.title}}</p>
-            <p>{{card.date}}</p>
+            <img [src]="card.img" alt="" />
+            <p>{{ card.title }}</p>
+            <p>{{ card.date }}</p>
         </li>
 
         <div *ngIf="last">
             <li (click)="addToTimelineRightSide(card)" class="emptySpace"></li>
         </div>
-
     </div>
-
 </ul>
 
 <div class="validation" *ngIf="cardSetted">
     <label for="position">Validez-vous cette position ?</label>
-    <input type="checkbox">
+    <input type="checkbox" />
 </div>

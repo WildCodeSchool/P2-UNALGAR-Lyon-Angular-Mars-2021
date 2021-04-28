@@ -12,10 +12,11 @@ export class CardDeckComponent implements OnInit {
   //Initialisation des variables
 
   timer: string;
+  hand: string;
   @Output() lancementTimer: EventEmitter<string> = new EventEmitter();
   playingCard: Card;
   firstCard: Card;
-  hasGameStarted: boolean = false;
+  @Output() hasGameStarted: boolean = false;
   public cardDeck: Card[] = [];
 
   // INJECTION DES SERVICES
@@ -38,6 +39,7 @@ export class CardDeckComponent implements OnInit {
 
   @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
 
+  @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
   sendingfirstCard() {
     this.firstCardEmitter.emit(this.firstCard);
   }
@@ -63,6 +65,7 @@ export class CardDeckComponent implements OnInit {
     this.playingCard = this.cardDeck[randomIndex];
     this.cardDeck.splice(randomIndex, 1);
     this.sendingplayingCard();
+    this.showHandCardEmitter.emit(true);
   }
 
   startTimer() {
