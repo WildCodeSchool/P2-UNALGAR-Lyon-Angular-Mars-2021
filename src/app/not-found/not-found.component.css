@@ -1,9 +1,10 @@
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 750px;
-    width: 750px;
+*{
+    margin: 0;
+    padding: 0;
+}
+.not{
+    text-align: center;
+    height: 400px;
 }
 
 button {
@@ -15,14 +16,14 @@ button {
     padding: 10px;
     background: transparent;
     font-family: "Russo One", sans-serif;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     -webkit-transform: scale(1.3);
     transform: scale(1.3);
-    cursor: grab;
-}
-
-button:focus {
+  }
+  
+  button:focus {
     outline: 0;
-}
+  }
+  
