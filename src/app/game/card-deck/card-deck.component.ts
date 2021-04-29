@@ -1,8 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { DeckService } from "src/app/common/deck.service";
 import { Card } from "../../common/card.model";
 import { GameService } from "src/app/common/game.service";
-
 @Component({
   selector: "app-card-deck",
   templateUrl: "./card-deck.component.html",
@@ -21,36 +19,18 @@ export class CardDeckComponent implements OnInit {
 
   // INJECTION DES SERVICES
 
-  constructor(
-    private deckService: DeckService,
-    private gameService: GameService
-  ) {}
-
-  // INITIALISATION DES SERVICES
+  constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.deckService.getCardDeck().subscribe((response) => {
-      this.cardDeck = response;
-      console.log(this.cardDeck)
-    });
-    
+    this.cardDeck = this.gameService.getMovies();
+    console.log(this.cardDeck);
   }
 
-  //Envoie la 1ère carte du jeu
+  // AU PREMIER CLIC
+  // > on envoie la 1ère carte du jeu dans la timeline
   @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
-
-  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
-
-  @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
   sendingfirstCard() {
     this.firstCardEmitter.emit(this.firstCard);
-  }
-
-  //Envoie la carte en cours
-  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
-
-  sendingplayingCard() {
-    this.playingCardEmitter.emit(this.playingCard);
   }
 
   pickFirstCard() {
@@ -61,16 +41,28 @@ export class CardDeckComponent implements OnInit {
     this.hasGameStarted = true;
     this.startTimerEmitter.emit(null);
   }
+  // > on lance le timer
+  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
+  startTimer() {
+    this.lancementTimer.emit(this.timer);
+  }
 
+  //AU DEUXIEME CLIC et ensuite
+  // > on affiche le titre de playingCard
+  @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
+  // > on envoie les cartes tirées de la pioche vers la main du joueur
+  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
+  sendingplayingCard() {
+    this.playingCardEmitter.emit(this.playingCard);
+  }
   pickPlayingCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.playingCard = this.cardDeck[randomIndex];
     this.cardDeck.splice(randomIndex, 1);
     this.sendingplayingCard();
     this.showHandCardEmitter.emit(true);
-  }
-
-  startTimer() {
-    this.lancementTimer.emit(this.timer);
+    if (this.cardDeck.length === 0) {
+      this.gameService.getMovies();
+    }
   }
 }

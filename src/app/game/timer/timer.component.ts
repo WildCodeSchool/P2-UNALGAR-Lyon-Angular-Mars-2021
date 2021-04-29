@@ -1,3 +1,4 @@
+import { ThrowStmt } from "@angular/compiler";
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 @Component({
@@ -7,29 +8,38 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 })
 export class TimerComponent implements OnInit {
   @Output() startTimerEmitter = new EventEmitter();
-  temps: number = 300;
+  temps: number = 310;
   minute: number = Math.floor(this.temps / 60);
   second: number = this.temps % 60;
   interval: any;
   lancement: boolean = false;
+  displayZero: string;
 
   startTimer() {
     if (!this.lancement) {
       this.interval = setInterval(() => {
+        this.displayZero = "";
         if (this.second > 0) {
+          if (this.second <= 10) {
+            this.displayZero = "0";
+          }
           this.second--;
         } else if (this.second === 0 && this.minute != 0) {
           this.minute--;
           this.second = 59;
         } else if (this.minute === 0 && this.second === 0) {
           clearInterval(this.interval);
-        } else if (this.second < 10) {
-         this.second;
         }
       }, 1000);
       this.lancement = true;
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.second < 10) {
+      this.displayZero = "0";
+    } else {
+      this.displayZero = "";
+    }
+  }
 }

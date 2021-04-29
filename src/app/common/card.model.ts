@@ -1,9 +1,9 @@
 export class Card {
   public title: string;
-  public date: number;
+  public date: string;
   public img: string;
 
-  constructor(title: string, date: number, img: string) {
+  constructor(title: string, date: string, img: string) {
     this.title = title;
     this.date = date;
     this.img = img;
