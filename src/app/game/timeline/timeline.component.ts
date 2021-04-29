@@ -10,6 +10,7 @@ import { Card } from "../../common/card.model";
 export class TimelineComponent implements OnInit {
   //Initialisation des valeurs
 
+
   public timelineDeck: Card[] = [];
 
   @Input() playingCard: Card;
@@ -20,6 +21,7 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit(): void {
     this.timelineDeck = this.gameService.getTimelineDeck();
+    
   }
 
   @Output() rightClick: EventEmitter<any> = new EventEmitter();

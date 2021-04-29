@@ -7,6 +7,7 @@
   margin: 0;
   overflow: auto;
   background-color: wheat;
+  min-height: 300px;
 }
 
 .timelineCard {
@@ -56,3 +57,4 @@ h1 {
 .validation {
   text-align: center;
 }
+
