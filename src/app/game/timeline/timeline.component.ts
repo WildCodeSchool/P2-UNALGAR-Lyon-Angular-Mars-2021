@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ɵɵtrustConstantResourceUrl,
+  ɵCodegenComponentFactoryResolver,
+} from "@angular/core";
 import { GameService } from "src/app/common/game.service";
 import { Card } from "../../common/card.model";
 
@@ -11,6 +19,7 @@ export class TimelineComponent implements OnInit {
   //Initialisation des valeurs
 
   public timelineDeck: Card[] = [];
+  public isDateRight: boolean;
 
   @Input() playingCard: Card;
 
@@ -30,6 +39,7 @@ export class TimelineComponent implements OnInit {
     //On définit ce que sera l'indice de playingCard dans la timeline
     let playingCardIndex: number = leftCardIndex + 1;
     this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
+    this.checkCardPosition(this.playingCard);
   }
 
   addToTimelineLeftSide(card: Card) {
@@ -38,5 +48,76 @@ export class TimelineComponent implements OnInit {
     //On définit ce que sera l'indice de playingCard dans la timeline
     let playingCardIndex: number = rightCardIndex;
     this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
+    this.checkCardPosition(this.playingCard);
+  }
+
+  checkCardPosition(playingCard: Card) {
+    //capter l'index actuel de la carte
+    let playingCardIndex: number = this.timelineDeck.indexOf(playingCard);
+    //On va chercher la carte qui est avant (leftCard) et la carte qui est après (rightCard) notre playingCard dans la timeline
+    let leftCard: Card = this.timelineDeck[playingCardIndex - 1];
+    console.log(leftCard);
+    let rightCard: Card = this.timelineDeck[playingCardIndex + 1];
+    console.log(rightCard);
+
+    if (
+      (parseInt(playingCard.date) >= parseInt(leftCard.date) &&
+        parseInt(playingCard.date) <= parseInt(rightCard.date)) ||
+      (parseInt(playingCard.date) >= parseInt(leftCard.date) &&
+        rightCard === undefined) ||
+      (parseInt(playingCard.date) <= parseInt(rightCard.date) &&
+        leftCard === undefined)
+    ) {
+      this.isDateRight = true;
+      alert("bravo");
+    } else {
+      this.isDateRight = false;
+      alert("vous avez faux !");
+      this.timelineDeck.splice(playingCardIndex, 1);
+    }
   }
 }
+
+// Marche bien quand il y a 2 cartes mais pour une raison inconnue, il ne pose la carte qu'après la validation ??!!
+
+/* VERSION BIEN TROP LONGUE QUI NE MARCHE PAS NON PLUS
+
+  checkCardPosition(playingCard: Card) {
+    //capter l'index actuel de la carte
+    let playingCardIndex: number = this.timelineDeck.indexOf(playingCard);
+    //On va chercher la carte qui est avant (leftCard) et la carte qui est après (rightCard) notre playingCard dans la timeline
+    let leftCard: Card = this.timelineDeck[playingCardIndex - 1];
+    console.log(leftCard);
+    let rightCard: Card = this.timelineDeck[playingCardIndex + 1];
+    console.log(rightCard);
+
+    //vérifier date de la playing card avec date de la card à la position array[i-1] et celle de la position array[i+1]
+
+    //Cas si playingcard est posée en 1er
+    if (playingCardIndex === 0) {
+      if (parseInt(playingCard.date) <= parseInt(rightCard.date)) {
+        alert("Bravo");
+      } else {
+        alert("faux");
+      }
+    }
+    //Cas si playingcard est posée en dernier
+    else if ((playingCardIndex = this.timelineDeck.length - 1)) {
+      if (parseInt(playingCard.date) >= parseInt(leftCard.date)) {
+        alert("Bravo");
+      } else {
+        alert("faux");
+      }
+    }
+    //Autres cas
+    else {
+      if (
+        parseInt(playingCard.date) >= parseInt(leftCard.date) &&
+        parseInt(playingCard.date) <= parseInt(rightCard.date)
+      ) {
+        alert("Bravo");
+      } else {
+        alert("faux");
+      }
+    }
+  } */

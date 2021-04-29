@@ -34,7 +34,7 @@ export class GameService {
     return this.cardDeck;
   }
 
-  movieIntoCard(movie: Movie): Card {
+  private movieIntoCard(movie: Movie): Card {
     this.slicedMovieDate = movie.release_date.slice(0, 4);
     this.completeMovieImgUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
     this.movieConverted = new Card(
