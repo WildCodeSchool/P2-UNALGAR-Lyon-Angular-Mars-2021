@@ -23,13 +23,10 @@ export class TimerComponent implements OnInit {
           this.second = 59;
         } else if (this.minute === 0 && this.second === 0) {
           clearInterval(this.interval);
-        } else if (this.second < 10) {
-         this.second;
         }
       }, 1000);
       this.lancement = true;
     }
   }
-
   ngOnInit(): void {}
 }

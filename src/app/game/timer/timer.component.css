@@ -1,4 +1,12 @@
+@-webkit-keyframes alarmTimer {
+  0% { background-color: transparent; }
+  50% { background-color: red;}
+  100% { background-color: transparent;}
+}
 .timer {
+  -webkit-animation-name: alarmTimer;
+  -webkit-animation-iteration-count: 5;  
+  -webkit-animation-duration: 1s; 
   font-size: 40px;
   display: block;
   margin-left: auto;
@@ -9,6 +17,6 @@ span {
 margin: auto;
 width: 200px;
 display: block;
-font-size: 50px;
+font-size: 40px;
 text-align: center;
 }
