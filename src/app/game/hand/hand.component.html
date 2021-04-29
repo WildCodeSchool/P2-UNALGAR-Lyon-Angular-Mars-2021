@@ -1,6 +1,8 @@
 <div *ngIf="showHandCard">
-<button>{{playingCard.title}}</button>
+    <button style="background-image: url({{playingCard.img}})">
+        <div class="encart">{{playingCard.title}}</div>
+    </button>
 </div>
 <div *ngIf="!showHandCard">
     <button></button>
-    </div>
+</div>

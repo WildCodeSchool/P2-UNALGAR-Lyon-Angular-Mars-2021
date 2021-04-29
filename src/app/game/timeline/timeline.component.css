@@ -9,6 +9,7 @@
 }
 
 .timelineCard {
+<<<<<<< HEAD
     background: #b0bec5;
     color: #fff;
     display: flex;
@@ -22,8 +23,32 @@
     align-items: center;
     justify-content: center;
     border-radius: 12px;
+=======
+  background: #b0bec5;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: bold;
+  height: 200px;
+  width: 150px;
+  align-items: center;
+  justify-content: flex-end;
 }
 
+.encart {
+  background-color: gray;
+  color: white;
+  text-align: center;
+  word-break: break-word;
+  font-size: 16px;
+  width: 100%;
+>>>>>>> c311dda5bbbf7cd5603e39ceec1ab16e6be35607
+}
+
+.encart p {
+  margin: 0;
+}
 h1 {
     text-align: center;
 }
