@@ -25,3 +25,8 @@ button:hover {
 button:focus {
   outline: 0;
 }
+
+.buttons {
+  margin-left: auto;
+  margin-right: auto;
+}

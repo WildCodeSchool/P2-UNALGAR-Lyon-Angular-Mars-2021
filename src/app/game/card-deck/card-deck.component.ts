@@ -31,7 +31,9 @@ export class CardDeckComponent implements OnInit {
   ngOnInit(): void {
     this.deckService.getCardDeck().subscribe((response) => {
       this.cardDeck = response;
+      console.log(this.cardDeck)
     });
+    
   }
 
   //Envoie la 1ère carte du jeu

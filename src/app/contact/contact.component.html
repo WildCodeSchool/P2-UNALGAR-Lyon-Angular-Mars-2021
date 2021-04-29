@@ -1,48 +1,53 @@
-
 <body>
 
-<div class="flex-container">
 
-  <img [src]="imageLogoTeam" [alt]="''">
+  <div class="container-fluid">
+    <div class="container">
+     <div class="row">
+
+  <img class="col-md-8 col-sm-12 col-12 imgLogo"[src]="imageLogoTeam" [alt]="''">
+      
+      </div>
 
 
 
     <!---------------------------Qui Sommes Nous? ----------------->
-
+    
   <h2>Qui sommes nous?</h2>
-
-  <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. 
+  <div class="row">
+  <p class="col-md-10 col-sm-12 ">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. 
     Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla 
     ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, 
     mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 
     1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, 
     par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
-
+  </div>
       <!---------------------------Nous Contacter ----------------->
 
 
   <h2>Adresse</h2>
-
-  <p>{{nom}} <br>
+  <div class="row">
+  <p class="col-md-6 col-sm-12 col-12">{{nom}} <br>
     {{adress.street}}<br>
     {{adress.city}} <br>
     {{telephoneNumber}}</p>
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.2488541080365!2d4.825337515932395!3d45.746156779105334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea4ab96b2285%3A0xd07b1fb24dc8242f!2s17%20Rue%20Delandine%2C%2069002%20Lyon!5e0!3m2!1sfr!2sfr!4v1619079493456!5m2!1sfr!2sfr"
+    <iframe class="col-md-8 col-sm-12" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.2488541080365!2d4.825337515932395!3d45.746156779105334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea4ab96b2285%3A0xd07b1fb24dc8242f!2s17%20Rue%20Delandine%2C%2069002%20Lyon!5e0!3m2!1sfr!2sfr!4v1619079493456!5m2!1sfr!2sfr"
      width="700" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
+</div>
 
 
        <!---------------------------Nous Retrouver ----------------->
 
 
   <h2>Nous retrouvez</h2>
-
-  <div>
+  <div class="row">
+  <div class="col-md-6 col-sm-12 col-12 logosDiv">
     <img class="logo" [src]="imageFb" [alt]="''">
     <img class="logo" [src]="imageTwitter" [alt]="''">
     <img class="logo" [src]="imageInstagram" [alt]="''">
     <img class="logo" [src]="imageGithub" [alt]="''">
+  </div>
   </div>
 
 
@@ -50,13 +55,12 @@
 
 
   <h2>Pour plus d'informations</h2>
-
-  <form (ngSubmit)="form.valid && onSubmit()" #myForm="ngForm" #form="ngForm">
-
+  
+  <form  (ngSubmit)="form.valid && onSubmit()" #myForm="ngForm" #form="ngForm">
   <div class="formAlign">
     <div class="form-item">
-      <label for="lastname-user">Nom</label>
-      <input type="text" name="lastname" [(ngModel)]="user.lastname" required minlength="3" maxlength="15"
+      <label  for="lastname-user">Nom</label>
+      <input class="col-md-12 col-sm-12 col-12" type="text" name="lastname" [(ngModel)]="user.lastname" required minlength="3" maxlength="15"
         #lastname="ngModel" size="20"/>
       <div *ngIf="form.submitted && lastname.errors">
         <span *ngIf="lastname.errors?.required">*Le nom est requis</span>
@@ -65,8 +69,8 @@
     </div>
 
     <div class="form-item">
-      <label for="firstname-user">Prénom</label>
-      <input type="text" name="firstname" [(ngModel)]="user.firstname" required minlength="3" maxlength="15"
+      <label  for="firstname-user">Prénom</label>
+      <input class="col-md-12 col-sm-12 col-12" type="text" name="firstname" [(ngModel)]="user.firstname" required minlength="3" maxlength="15"
         #firstname="ngModel" size="20" />
       <div *ngIf="form.submitted && firstname.errors">
         <span *ngIf="firstname.errors?.required">*Le prénom est requis</span>
@@ -76,8 +80,8 @@
   </div>
 
     <div class="form-item">
-      <label for="mail-user">@E-Mail</label>
-      <input type="mail" name="mail" [(ngModel)]="user.mail" required email #mail="ngModel" size="50"/>
+      <label  for="mail-user">@E-Mail</label>
+      <input class="col-md-6 col-sm-12 col-12" type="mail" name="mail" [(ngModel)]="user.mail" required email #mail="ngModel" size="50"/>
       <div *ngIf="form.submitted && mail.errors">
         <span *ngIf="mail.errors?.required">*Le mail est requis</span>
         <span *ngIf="mail.errors?.email">*Le mail est requis</span>
@@ -86,23 +90,25 @@
 
     <div class="form-item">
       <label for="message-user">Message</label>
-      <textarea type="textarea" name="message-user" [(ngModel)]="user.message" required #message="ngModel"></textarea>
+      <textarea class="col-md-6 col-sm-12 col-12" type="textarea" name="message-user" [(ngModel)]="user.message" required #message="ngModel"></textarea>
       <div *ngIf="form.submitted && message.errors">
         <span *ngIf="message.errors?.required">*Merci de remplir votre message</span>
-      </div>
-    </div>
+    </div><br>
 
     <button type="submit">Envoyer</button>
 
     <div *ngIf="form.submitted && form.invalid">
       <span>*Le formulaire n'est pas rempli correctement</span>
     </div>
-
+  </div>
   </form>
 
   <button [routerLink]='[""]'><img class="return" src="../../assets/img/leftArrow1.png"></button>
 
 </div>
+
+
+  </div>
 
 </body>
 

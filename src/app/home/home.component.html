@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="home.component.css" />
-    <script type="text/javascript" src="main.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
-    <title>Unaglar Timeline</title>
-</head>
-
-<body>
-    <img [src]="imagesrc" [alt]="name" />
+<div class="container-fluid">
+    <div class="container">
+     <div class="row">
+    <img class="col-md-8 col-sm-12 col-12"[src]="imagesrc" [alt]="name" />
+    </div>
+    <div class="col-md-6 col-sm-12 col-12 buttons">
     <button [routerLink]="['/game']">Jouer</button>
     <button [routerLink]="['/rules']">Règles</button>
     <button [routerLink]="['/contact']">Nous contacter</button>
-</body>
-
-</html>
+    </div>
+</div>
+</div>
