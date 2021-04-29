@@ -6,8 +6,18 @@ button {
   border: none;
   font-size: 20px;
   color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 button:focus {
   outline: 0;
+}
+
+.encart {
+  background-color: gray;
+  color: white;
+  width: 100%;
+  margin: 0;
 }
