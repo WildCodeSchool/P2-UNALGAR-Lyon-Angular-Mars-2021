@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 name : string = "image d'accueil timeline"
-imagesrc : string = "../../assets/img/timeline.png"
+imagesrc : string = "../../assets/img/unalgarMovies1.jpg"
 
 
   constructor() { }

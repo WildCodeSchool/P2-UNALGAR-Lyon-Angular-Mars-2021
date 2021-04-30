@@ -23,7 +23,7 @@ export class CardDeckComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardDeck = this.gameService.getMovies();
-    console.log(this.cardDeck);
+    
   }
 
   // AU PREMIER CLIC
