@@ -1,5 +1,6 @@
 <h1>Ajoute ta carte à la timeline</h1>
 
+
 <ul class="scroller">
     <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
         <li (click)="addToTimelineLeftSide(card)" class="emptySpace"></li>
@@ -14,5 +15,6 @@
         <div *ngIf="last">
             <li (click)="addToTimelineRightSide(card)" class="emptySpace"></li>
         </div>
+        
     </div>
 </ul>
