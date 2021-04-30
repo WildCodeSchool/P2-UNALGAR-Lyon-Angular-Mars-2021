@@ -11,6 +11,7 @@ export class TimelineComponent implements OnInit {
   //Initialisation des valeurs
 
   public timelineDeck: Card[] = [];
+  public divShow : boolean = true;
 
   @Input() playingCard: Card;
 
@@ -29,7 +30,7 @@ export class TimelineComponent implements OnInit {
     let leftCardIndex: number = this.timelineDeck.indexOf(card);
     //On définit ce que sera l'indice de playingCard dans la timeline
     let playingCardIndex: number = leftCardIndex + 1;
-    this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
+    
   }
 
   addToTimelineLeftSide(card: Card) {
@@ -37,6 +38,6 @@ export class TimelineComponent implements OnInit {
     let rightCardIndex: number = this.timelineDeck.indexOf(card);
     //On définit ce que sera l'indice de playingCard dans la timeline
     let playingCardIndex: number = rightCardIndex;
-    this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
+    
   }
 }

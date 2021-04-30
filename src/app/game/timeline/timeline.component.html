@@ -4,10 +4,10 @@
     <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
         <li (click)="addToTimelineLeftSide(card)" class="emptySpace"></li>
 
-        <li class="timelineCard" style="background-image: url({{card.img}})">
+        <li class="timelineCard" style="background-image: url({{ card.img }})">
             <div class="encart">
                 <p>{{ card.title }}</p>
-                <p>{{ card.date}}</p>
+                <p>{{ card.date }}</p>
             </div>
         </li>
 
