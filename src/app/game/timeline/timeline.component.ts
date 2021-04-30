@@ -64,9 +64,9 @@ export class TimelineComponent implements OnInit {
       (parseInt(playingCard.date) >= parseInt(leftCard.date) &&
         parseInt(playingCard.date) <= parseInt(rightCard.date)) ||
       (parseInt(playingCard.date) >= parseInt(leftCard.date) &&
-        rightCard === undefined) ||
+        rightCard == undefined) ||
       (parseInt(playingCard.date) <= parseInt(rightCard.date) &&
-        leftCard === undefined)
+        leftCard == undefined)
     ) {
       this.isDateRight = true;
       alert("bravo");
