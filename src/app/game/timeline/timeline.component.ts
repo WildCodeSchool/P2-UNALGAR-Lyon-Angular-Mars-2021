@@ -56,23 +56,22 @@ export class TimelineComponent implements OnInit {
     let playingCardIndex: number = this.timelineDeck.indexOf(playingCard);
     //On va chercher la carte qui est avant (leftCard) et la carte qui est après (rightCard) notre playingCard dans la timeline
     let leftCard: Card = this.timelineDeck[playingCardIndex - 1];
-    console.log(leftCard);
     let rightCard: Card = this.timelineDeck[playingCardIndex + 1];
-    console.log(rightCard);
 
     if (
-      (parseInt(playingCard.date) >= parseInt(leftCard.date) &&
-        parseInt(playingCard.date) <= parseInt(rightCard.date)) ||
-      (parseInt(playingCard.date) >= parseInt(leftCard.date) &&
-        rightCard == undefined) ||
       (parseInt(playingCard.date) <= parseInt(rightCard.date) &&
-        leftCard == undefined)
+        typeof leftCard == undefined) ||
+      //la condition du milieu ne marche pas : pourquoi ??
+      (parseInt(playingCard.date) >= parseInt(leftCard.date) &&
+        typeof rightCard == undefined) ||
+      (parseInt(playingCard.date) >= parseInt(leftCard.date) &&
+        parseInt(playingCard.date) <= parseInt(rightCard.date))
     ) {
       this.isDateRight = true;
-      alert("bravo");
+      alert("bravo !");
     } else {
       this.isDateRight = false;
-      alert("vous avez faux !");
+      alert("Et non !");
       this.timelineDeck.splice(playingCardIndex, 1);
     }
   }
@@ -81,43 +80,42 @@ export class TimelineComponent implements OnInit {
 // Marche bien quand il y a 2 cartes mais pour une raison inconnue, il ne pose la carte qu'après la validation ??!!
 
 /* VERSION BIEN TROP LONGUE QUI NE MARCHE PAS NON PLUS
-
   checkCardPosition(playingCard: Card) {
     //capter l'index actuel de la carte
     let playingCardIndex: number = this.timelineDeck.indexOf(playingCard);
     //On va chercher la carte qui est avant (leftCard) et la carte qui est après (rightCard) notre playingCard dans la timeline
     let leftCard: Card = this.timelineDeck[playingCardIndex - 1];
-    console.log(leftCard);
     let rightCard: Card = this.timelineDeck[playingCardIndex + 1];
-    console.log(rightCard);
 
-    //vérifier date de la playing card avec date de la card à la position array[i-1] et celle de la position array[i+1]
-
-    //Cas si playingcard est posée en 1er
     if (playingCardIndex === 0) {
-      if (parseInt(playingCard.date) <= parseInt(rightCard.date)) {
-        alert("Bravo");
-      } else {
-        alert("faux");
-      }
-    }
-    //Cas si playingcard est posée en dernier
-    else if ((playingCardIndex = this.timelineDeck.length - 1)) {
       if (parseInt(playingCard.date) >= parseInt(leftCard.date)) {
-        alert("Bravo");
+        this.isDateRight = true;
+        alert("bravo");
       } else {
-        alert("faux");
+        this.isDateRight = false;
+        alert("vous avez faux !");
+        this.timelineDeck.splice(playingCardIndex, 1);
       }
-    }
-    //Autres cas
-    else {
+    } else if (playingCardIndex === this.timelineDeck.length - 1) {
+      if (parseInt(playingCard.date) >= parseInt(leftCard.date)) {
+        this.isDateRight = true;
+        alert("bravo");
+      } else {
+        this.isDateRight = false;
+        alert("vous avez faux !");
+        this.timelineDeck.splice(playingCardIndex, 1);
+      }
+    } else {
       if (
         parseInt(playingCard.date) >= parseInt(leftCard.date) &&
         parseInt(playingCard.date) <= parseInt(rightCard.date)
       ) {
-        alert("Bravo");
+        this.isDateRight = true;
+        alert("bravo");
       } else {
-        alert("faux");
+        this.isDateRight = false;
+        alert("vous avez faux !");
+        this.timelineDeck.splice(playingCardIndex, 1);
       }
     }
   } */
