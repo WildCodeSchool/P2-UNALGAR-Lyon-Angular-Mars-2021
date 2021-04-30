@@ -10,7 +10,6 @@ import { Card } from "../../common/card.model";
 export class TimelineComponent implements OnInit {
   //Initialisation des valeurs
 
-
   public timelineDeck: Card[] = [];
 
   @Input() playingCard: Card;
@@ -21,7 +20,6 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit(): void {
     this.timelineDeck = this.gameService.getTimelineDeck();
-    
   }
 
   @Output() rightClick: EventEmitter<any> = new EventEmitter();
@@ -33,6 +31,9 @@ export class TimelineComponent implements OnInit {
     let playingCardIndex: number = leftCardIndex + 1;
     this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
   }
+  
+// ont veut validé la carte si elle est supérieur
+
 
   addToTimelineLeftSide(card: Card) {
     // On va chercher l'indice de la carte à droite de l'emplacement choisi
@@ -41,4 +42,5 @@ export class TimelineComponent implements OnInit {
     let playingCardIndex: number = rightCardIndex;
     this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
   }
+// ont veut validé la carte si la date est inférieur
 }
