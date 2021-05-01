@@ -10,7 +10,7 @@ export class TimerComponent implements OnInit {
   @Output() startTimerEmitter = new EventEmitter();
   @Output() stopTimerEmitter = new EventEmitter();
 
-  temps: number = 3;
+  temps: number = 300;
   minute: number = Math.floor(this.temps / 60);
   second: number = this.temps % 60;
   interval: any;
