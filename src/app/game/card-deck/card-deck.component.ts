@@ -9,6 +9,7 @@ import { GameService } from "src/app/common/game.service";
 export class CardDeckComponent implements OnInit {
   //Initialisation des variables
 
+  stopTimer:boolean = false;
   timer: string;
   hand: string;
   @Output() lancementTimer: EventEmitter<string> = new EventEmitter();
@@ -23,7 +24,6 @@ export class CardDeckComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardDeck = this.gameService.getMovies();
-    console.log(this.cardDeck);
   }
 
   // AU PREMIER CLIC
@@ -56,13 +56,20 @@ export class CardDeckComponent implements OnInit {
     this.playingCardEmitter.emit(this.playingCard);
   }
   pickPlayingCard() {
-    let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
-    this.playingCard = this.cardDeck[randomIndex];
-    this.cardDeck.splice(randomIndex, 1);
-    this.sendingplayingCard();
-    this.showHandCardEmitter.emit(true);
-    if (this.cardDeck.length === 0) {
-      this.gameService.getMovies();
+    if(!this.stopTimer) {
+      let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
+      this.playingCard = this.cardDeck[randomIndex];
+      this.cardDeck.splice(randomIndex, 1);
+      this.sendingplayingCard();
+      this.showHandCardEmitter.emit(true);
+      if (this.cardDeck.length === 0) {
+        this.gameService.getMovies();
+      }
     }
   }
+
+  recievedStopTimer() {
+    this.stopTimer = true;
+  }
+
 }
