@@ -16,6 +16,10 @@ export class TimelineComponent implements OnInit {
 
   stopTimer:boolean = false;
 
+  scoreTotal: number;
+
+  displayScoreTotal: boolean = false;
+
   // INJECTION DES SERVICES
 
   constructor(private gameService: GameService) {}
@@ -52,5 +56,12 @@ export class TimelineComponent implements OnInit {
 
    recievedStopTimer(){
      this.stopTimer = true;
+     this.showScoreTotal();
    }
+
+   showScoreTotal() {
+     this.scoreTotal = this.timelineDeck.length - 1;
+     this.displayScoreTotal = true;
+   }
+
 }
