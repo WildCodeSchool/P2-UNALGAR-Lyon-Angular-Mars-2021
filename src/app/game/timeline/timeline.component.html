@@ -1,7 +1,7 @@
 <h1>Ajoute ta carte à la timeline</h1>
 
 
-<ul class="scroller" *ngIf="!displayScoreTotal">
+<ul class="scroller">
     <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
         <li (click)="addToTimelineLeftSide(card)" class="emptySpace"></li>
 
@@ -18,6 +18,3 @@
         
     </div>
 </ul>
-<div *ngIf="displayScoreTotal" class="scroller">
-Ton score est : {{scoreTotal}}
-</div>
