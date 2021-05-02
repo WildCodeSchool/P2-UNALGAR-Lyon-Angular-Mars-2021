@@ -1,62 +1,62 @@
 .scroller {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  overflow-y: auto;
-  scroll-snap-align: inherit;
-  position: relative;
-  background-color: wheat;
-  min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    position: relative;
+    background-color: wheat;
+    min-height: 300px;
+    width: 100%;
 }
 
 .timelineCard {
-  background: #b0bec5;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  font-weight: bold;
-  height: 300px;
-  width: 200px;
-  align-items: center;
-  justify-content: flex-end;
+    background: #b0bec5;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: bold;
+    height: 300px;
+    width: 200px;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .encart {
-  background-color: gray;
-  color: white;
-  text-align: center;
-  word-break: break-word;
-  font-size: 16px;
-  width: 100%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    word-break: break-word;
+    font-size: 16px;
+    width: 100%;
 }
 
 .encart p {
-  margin: 0;
+    margin: 0;
 }
+
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 .timelineDiv {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .emptySpace {
-  background: black;
-  border-radius: 50%;
-  opacity: 0.5;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  margin: 10px;
+    background: black;
+    border-radius: 50%;
+    opacity: 0.5;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    margin: 10px;
 }
 
 .validation {
-  text-align: center;
+    text-align: center;
 }
-
