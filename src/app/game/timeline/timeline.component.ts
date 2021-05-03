@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  ɵɵtrustConstantResourceUrl,
-  ɵCodegenComponentFactoryResolver,
-} from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { GameService } from "src/app/common/game.service";
 import { Card } from "../../common/card.model";
 
@@ -50,7 +42,7 @@ export class TimelineComponent implements OnInit {
       this.checkCardPosition(this.playingCard);
     }
   }
-  // ont veut validé la carte si elle est supérieur
+  // on veut validé la carte si elle est supérieur
 
   addToTimelineLeftSide(card: Card) {
     if (!this.stopTimer) {
@@ -100,5 +92,9 @@ export class TimelineComponent implements OnInit {
     setTimeout(() => {
       this.displayMessage = false;
     }, 500);
+  }
+
+  recievedStopTimer() {
+    this.stopTimer = true;
   }
 }
