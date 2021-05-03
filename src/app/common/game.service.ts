@@ -44,4 +44,14 @@ export class GameService {
     );
     return this.movieConverted;
   }
+
+  resetAllGame():void{
+    this.cardDeck.splice(0)
+    this.timelineDeck.splice(0)
+
+
+  }
+
 }
+
+
