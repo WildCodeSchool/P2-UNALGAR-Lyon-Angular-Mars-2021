@@ -3,6 +3,7 @@ import { Card } from "src/app/common/card.model";
 import { BooleanObject } from "./booleanObject.model";
 import { Movie } from "./movie.model";
 import { MoviesService } from "./movies.service";
+import { TimerObject } from "./timerObject.model";
 
 @Injectable({
   providedIn: "root",
@@ -40,41 +41,53 @@ export class GameService {
     this.cardDeck.splice(randomIndex, 1);
     this.addCardToTimeline(this.firstCard);
     this.hasGameStarted.value = true;
+    this.startTimer();
   }
 
   public addCardToTimeline(card: Card) {
     this.timelineDeck.push(card);
   }
 
+  //TIMER DEBUT
   public lancement: BooleanObject = { value: false };
   public temps: number = 300;
-  public minute: number = Math.floor(this.temps / 60);
-  public second: number = this.temps % 60;
   public interval: any;
   public displayZero: string;
 
-  public startTimer() {
+  public timerObject = new TimerObject(
+    Math.floor(this.temps / 60),
+    this.temps % 60
+  );
+
+  startTimer() {
+    console.log("le timer est lancé");
     if (!this.lancement.value) {
       this.interval = setInterval(() => {
         this.displayZero = "";
-        if (this.second > 0) {
-          if (this.second <= 10) {
+        if (this.timerObject.second > 0) {
+          if (this.timerObject.second <= 10) {
             this.displayZero = "0";
           }
-          this.second--;
-        } else if (this.second === 0 && this.minute != 0) {
-          this.minute--;
-          this.second = 59;
-        } else if (this.minute === 0 && this.second === 0) {
+          this.timerObject.second--;
+        } else if (
+          this.timerObject.second === 0 &&
+          this.timerObject.minute != 0
+        ) {
+          this.timerObject.minute--;
+          this.timerObject.second = 59;
+        } else if (
+          this.timerObject.minute === 0 &&
+          this.timerObject.second === 0
+        ) {
           clearInterval(this.interval);
           this.displayZero = "0";
-          /*           this.stopTimerEmitter.emit(true);
-           */
         }
       }, 1000);
       this.lancement.value = true;
     }
   }
+
+  //TIMER FIN
 
   private movieIntoCard(movie: Movie): Card {
     this.slicedMovieDate = movie.release_date.slice(0, 4);
