@@ -41,9 +41,8 @@ export class TimelineComponent implements OnInit {
     this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
     this.checkCardPosition(this.playingCard);
   }
-  
-// ont veut validé la carte si elle est supérieur
 
+  // ont veut validé la carte si elle est supérieur
 
   addToTimelineLeftSide(card: Card) {
     // On va chercher l'indice de la carte à droite de l'emplacement choisi
@@ -78,7 +77,6 @@ export class TimelineComponent implements OnInit {
       this.timelineDeck.splice(playingCardIndex, 1);
     }
   }
-// ont veut validé la carte si la date est inférieur
 }
 
 // Marche bien quand il y a 2 cartes mais pour une raison inconnue, il ne pose la carte qu'après la validation ??!!
