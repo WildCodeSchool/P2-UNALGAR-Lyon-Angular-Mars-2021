@@ -86,6 +86,10 @@ export class TimelineComponent implements OnInit {
         this.timelineDeck.splice(playingCardIndex, 1);
       }
     }
+
     this.displayMessage = true;
+    setInterval(() => {
+      this.displayMessage = false;
+    }, 1500);
   }
 }
