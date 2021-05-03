@@ -15,12 +15,7 @@ import { Router } from "@angular/router";
 })
 export class GameComponent implements OnInit {
   public timelineDeck: Card[] = [];
-  public hasBeenClicked: boolean = true;
   
- 
-
-
-
   // INJECTION DU SERVICE
 
   constructor(private gameService: GameService, private router: Router) {}
