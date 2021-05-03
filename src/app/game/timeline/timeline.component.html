@@ -1,20 +1,21 @@
 <h1>Ajoute ta carte à la timeline</h1>
 
-
-<ul class="scroller">
+<div class="scroller ">
+    
+    <div class="cardBlock">
     <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
-        <li (click)="addToTimelineLeftSide(card)" class="emptySpace"></li>
+        <div (click)="addToTimelineLeftSide(card)" class="emptySpace"></div>
 
-        <li class="timelineCard" style="background: center url({{card.img}})">
+        <div class="timelineCard" style="background: center url({{card.img}})">
             <div class="encart">
                 <p>{{ card.title }}</p>
                 <p>{{ card.date}}</p>
             </div>
-        </li>
+        </div>
 
         <div *ngIf="last">
-            <li (click)="addToTimelineRightSide(card)" class="emptySpace"></li>
+            <div (click)="addToTimelineRightSide(card)" class="emptySpace"></div>
         </div>
-        
+    </div> 
     </div>
-</ul>
+</div>
