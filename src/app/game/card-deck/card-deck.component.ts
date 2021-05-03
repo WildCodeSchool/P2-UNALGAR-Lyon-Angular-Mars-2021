@@ -33,6 +33,13 @@ export class CardDeckComponent implements OnInit {
     this.firstCardEmitter.emit(this.firstCard);
   }
 
+  resetPioche(){
+this.hasGameStarted = false;
+
+
+
+  }
+
   pickFirstCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.firstCard = this.cardDeck[randomIndex];
