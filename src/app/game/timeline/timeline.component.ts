@@ -19,7 +19,8 @@ export class TimelineComponent implements OnInit {
   //Initialisation des valeurs
 
   public timelineDeck: Card[] = [];
-  public isDateRight: boolean;
+  public isDateRight: boolean = false;
+  public displayMessage: boolean = false;
 
   @Input() playingCard: Card;
 
@@ -63,19 +64,15 @@ export class TimelineComponent implements OnInit {
     if (playingCardIndex === 0) {
       if (parseInt(playingCard.date) <= parseInt(rightCard.date)) {
         this.isDateRight = true;
-        alert("bravo");
       } else {
         this.isDateRight = false;
-        alert("vous avez faux !");
         this.timelineDeck.splice(playingCardIndex, 1);
       }
     } else if (playingCardIndex === this.timelineDeck.length - 1) {
       if (parseInt(playingCard.date) >= parseInt(leftCard.date)) {
         this.isDateRight = true;
-        alert("bravo");
       } else {
         this.isDateRight = false;
-        alert("vous avez faux !");
         this.timelineDeck.splice(playingCardIndex, 1);
       }
     } else {
@@ -84,12 +81,11 @@ export class TimelineComponent implements OnInit {
         parseInt(playingCard.date) <= parseInt(rightCard.date)
       ) {
         this.isDateRight = true;
-        alert("bravo");
       } else {
         this.isDateRight = false;
-        alert("vous avez faux !");
         this.timelineDeck.splice(playingCardIndex, 1);
       }
     }
+    this.displayMessage = true;
   }
 }
