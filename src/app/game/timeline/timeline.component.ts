@@ -42,7 +42,9 @@ export class TimelineComponent implements OnInit {
       let playingCardIndex: number = leftCardIndex + 1;
       this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
       this.checkCardPosition(this.playingCard);
-      this.pickPlayingCard();
+      setTimeout(() => {
+        this.pickPlayingCard();
+      }, 800);
     }
   }
   // ont veut validé la carte si elle est supérieur
@@ -55,7 +57,9 @@ export class TimelineComponent implements OnInit {
       let playingCardIndex: number = rightCardIndex;
       this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
       this.checkCardPosition(this.playingCard);
-      this.pickPlayingCard();
+      setTimeout(() => {
+        this.pickPlayingCard();
+      }, 800);
     }
   }
 
