@@ -13,6 +13,7 @@ export class TimelineComponent implements OnInit {
   public timelineDeck: Card[] = [];
   public isDateRight: boolean = false;
   public displayMessage: boolean = false;
+  public cardDeck: Card[] = [];
 
   @Input() playingCard: Card;
 
@@ -28,6 +29,7 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit(): void {
     this.timelineDeck = this.gameService.getTimelineDeck();
+    this.cardDeck = this.gameService.getCardDeck();
   }
 
   @Output() rightClick: EventEmitter<any> = new EventEmitter();
@@ -40,9 +42,12 @@ export class TimelineComponent implements OnInit {
       let playingCardIndex: number = leftCardIndex + 1;
       this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
       this.checkCardPosition(this.playingCard);
+      setTimeout(() => {
+        this.pickPlayingCard();
+      }, 800);
     }
   }
-  // on veut validé la carte si elle est supérieur
+  // ont veut validé la carte si elle est supérieur
 
   addToTimelineLeftSide(card: Card) {
     if (!this.stopTimer) {
@@ -52,6 +57,9 @@ export class TimelineComponent implements OnInit {
       let playingCardIndex: number = rightCardIndex;
       this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
       this.checkCardPosition(this.playingCard);
+      setTimeout(() => {
+        this.pickPlayingCard();
+      }, 800);
     }
   }
 
@@ -91,10 +99,28 @@ export class TimelineComponent implements OnInit {
     this.displayMessage = true;
     setTimeout(() => {
       this.displayMessage = false;
-    }, 500);
+    }, 800);
   }
 
   recievedStopTimer() {
     this.stopTimer = true;
+  }
+
+  // > on envoie les cartes tirées de la pioche vers la main du joueur
+  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
+  sendingplayingCard() {
+    this.playingCardEmitter.emit(this.playingCard);
+  }
+
+  pickPlayingCard() {
+    if (!this.stopTimer) {
+      let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
+      this.playingCard = this.cardDeck[randomIndex];
+      this.cardDeck.splice(randomIndex, 1);
+      this.sendingplayingCard();
+      if (this.cardDeck.length === 0) {
+        this.gameService.getMovies();
+      }
+    }
   }
 }

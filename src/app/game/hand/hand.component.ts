@@ -1,7 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { BooleanObject } from "src/app/common/booleanObject.model";
-import { GameService } from "src/app/common/game.service";
-import { ShowHandCard } from "src/app/common/showhandcard.model";
 import { Card } from "../../common/card.model";
 import { CardDeckComponent } from "../card-deck/card-deck.component";
 @Component({
@@ -11,24 +8,18 @@ import { CardDeckComponent } from "../card-deck/card-deck.component";
 })
 export class HandComponent implements OnInit {
   @Input() playingCard: Card;
+  @Output() hasGameStartedEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  public hasGameStarted : BooleanObject 
+  public showHandCard: boolean = false;
 
-  public showHandCard: ShowHandCard 
+  constructor() {}
 
-  constructor(private gameService: GameService) {
-    this.hasGameStarted = this.gameService.hasGameStarted;
-  }
-
-  ngOnInit(): void {
-    this.showHandCard = this.gameService.showHandCard
-  }
+  ngOnInit(): void {}
 
   displayHandCard() {
-    this.showHandCard.showCard = true
+    this.showHandCard = true;
   }
-
   hideHandCard() {
-    this.showHandCard.showCard = false
+    this.showHandCard = false;
   }
 }
