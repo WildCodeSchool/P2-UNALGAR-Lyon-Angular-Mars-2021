@@ -37,7 +37,7 @@ export class GameComponent implements OnInit {
 
 // je redirige vers l'accueil
 
-
+window.alert();
 this.router.navigate([""])
 
     
