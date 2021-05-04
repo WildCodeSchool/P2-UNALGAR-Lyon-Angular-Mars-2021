@@ -2,7 +2,7 @@
 
 <app-timer #timer (stopTimerEmitter)="timeline.recievedStopTimer()" (stopTimerEmitter)="cardDeck.recievedStopTimer()">
 </app-timer>
-<app-timeline #timeline [playingCard]="playingCard"></app-timeline>
+<app-timeline #timeline [playingCard]="playingCard" (playingCardEmitter)="onReceiveplayingCard($event)"></app-timeline>
 <div class="bottom-menu">
   <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)" (startTimerEmitter)="timer.startTimer()"
     (showHandCardEmitter)="hand.displayHandCard()" (firstCardEmitter)="onReceivefirstCard($event)"></app-card-deck>
