@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { GameService } from "src/app/common/game.service";
+import { TimerObject } from "src/app/common/timerObject.model";
 
 @Component({
   selector: "app-timer",
@@ -6,43 +8,17 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
   styleUrls: ["./timer.component.css"],
 })
 export class TimerComponent implements OnInit {
-  @Output() startTimerEmitter = new EventEmitter();
-  @Output() stopTimerEmitter = new EventEmitter();
+ 
+  timerObject: TimerObject;
 
-  temps: number = 300;
-  minute: number = Math.floor(this.temps / 60);
-  second: number = this.temps % 60;
-  interval: any;
-  lancement: boolean = false;
-  displayZero: string;
-
-  startTimer() {
-    if (!this.lancement) {
-      this.interval = setInterval(() => {
-        this.displayZero = "";
-        if (this.second > 0) {
-          if (this.second <= 10) {
-            this.displayZero = "0";
-          }
-          this.second--;
-        } else if (this.second === 0 && this.minute != 0) {
-          this.minute--;
-          this.second = 59;
-        } else if (this.minute === 0 && this.second === 0) {
-          clearInterval(this.interval);
-          this.displayZero = "0";
-          this.stopTimerEmitter.emit(true);
-        }
-      }, 1000);
-      this.lancement = true;
-    }
-  }
+  constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    if (this.second < 10) {
-      this.displayZero = "0";
+    this.timerObject = this.gameService.timerObject;
+    if (this.timerObject.second < 10) {
+      this.timerObject.displayZero = "0";
     } else {
-      this.displayZero = "";
+      this.timerObject.displayZero = "";
     }
   }
 }
