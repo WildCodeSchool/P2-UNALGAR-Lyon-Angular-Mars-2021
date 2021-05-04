@@ -52,21 +52,20 @@ export class GameService {
   public lancement: BooleanObject = { value: false };
   public temps: number = 300;
   public interval: any;
-  public displayZero: string;
 
   public timerObject = new TimerObject(
     Math.floor(this.temps / 60),
-    this.temps % 60
+    this.temps % 60,
+    ""
   );
 
   startTimer() {
-    console.log("le timer est lancé");
     if (!this.lancement.value) {
       this.interval = setInterval(() => {
-        this.displayZero = "";
+        this.timerObject.displayZero = "";
         if (this.timerObject.second > 0) {
           if (this.timerObject.second <= 10) {
-            this.displayZero = "0";
+            this.timerObject.displayZero = "0";
           }
           this.timerObject.second--;
         } else if (
@@ -80,7 +79,7 @@ export class GameService {
           this.timerObject.second === 0
         ) {
           clearInterval(this.interval);
-          this.displayZero = "0";
+          this.timerObject.displayZero = "0";
         }
       }, 1000);
       this.lancement.value = true;

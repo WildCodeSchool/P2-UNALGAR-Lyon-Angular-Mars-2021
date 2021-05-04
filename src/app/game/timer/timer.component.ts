@@ -8,22 +8,17 @@ import { TimerObject } from "src/app/common/timerObject.model";
   styleUrls: ["./timer.component.css"],
 })
 export class TimerComponent implements OnInit {
-  minute: number;
-  second: number;
+ 
   timerObject: TimerObject;
-  displayZero: string;
 
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
     this.timerObject = this.gameService.timerObject;
-    this.minute = this.timerObject.minute;
-    this.second = this.timerObject.second;
-    this.displayZero = this.gameService.displayZero;
-    if (this.second < 10) {
-      this.displayZero = "0";
+    if (this.timerObject.second < 10) {
+      this.timerObject.displayZero = "0";
     } else {
-      this.displayZero = "";
+      this.timerObject.displayZero = "";
     }
   }
 }

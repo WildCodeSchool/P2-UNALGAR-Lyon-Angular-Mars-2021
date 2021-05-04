@@ -96,5 +96,13 @@ export class TimelineComponent implements OnInit {
 
   recievedStopTimer() {
     this.stopTimer = true;
+    this.showScoreTotal();
+  }
+
+  showScoreTotal(){
+    if(!this.displayScoreTotal) {
+      this.scoreTotal = this.timelineDeck.length - 1;
+      alert(`Ton score est : ${this.scoreTotal}`)
+    }
   }
 }
