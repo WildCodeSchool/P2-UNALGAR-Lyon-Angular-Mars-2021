@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { Card } from "../../common/card.model";
 import { GameService } from "src/app/common/game.service";
+import { BooleanObject } from "src/app/common/booleanObject.model";
 @Component({
   selector: "app-card-deck",
   templateUrl: "./card-deck.component.html",
@@ -15,7 +16,7 @@ export class CardDeckComponent implements OnInit {
   @Output() lancementTimer: EventEmitter<string> = new EventEmitter();
   playingCard: Card;
   firstCard: Card;
-  @Output() hasGameStarted: boolean = false;
+  public hasGameStarted: BooleanObject;
   public cardDeck: Card[] = [];
 
   // INJECTION DES SERVICES
@@ -24,28 +25,18 @@ export class CardDeckComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardDeck = this.gameService.getMovies();
-  }
-
-  // AU PREMIER CLIC
-  // > on envoie la 1ère carte du jeu dans la timeline
-  @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
-  sendingfirstCard() {
-    this.firstCardEmitter.emit(this.firstCard);
+    this.hasGameStarted = this.gameService.hasGameStarted;
   }
 
   resetPioche() {
-    this.hasGameStarted = false;
+    this.hasGameStarted.value = false;
+    return true;
   }
 
   pickFirstCard() {
-    let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
-    this.firstCard = this.cardDeck[randomIndex];
-    this.cardDeck.splice(randomIndex, 1);
-    this.gameService.addCardToTimeline(this.firstCard);
-    this.hasGameStarted = true;
-    this.startTimerEmitter.emit(null);
-    this.pickPlayingCard();
+    this.gameService.pickFirstCard();
   }
+
   // > on lance le timer
   @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
   startTimer() {
@@ -60,7 +51,7 @@ export class CardDeckComponent implements OnInit {
   sendingplayingCard() {
     this.playingCardEmitter.emit(this.playingCard);
   }
-  
+
   pickPlayingCard() {
     if (!this.stopTimer) {
       let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
@@ -74,7 +65,4 @@ export class CardDeckComponent implements OnInit {
     }
   }
 
-  recievedStopTimer() {
-    this.stopTimer = true;
-  }
 }
