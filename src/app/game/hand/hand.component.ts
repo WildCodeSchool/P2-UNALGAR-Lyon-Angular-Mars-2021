@@ -25,7 +25,6 @@ export class HandComponent implements OnInit {
   displayHandCard() {
     this.showHandCard = true;
   }
-
   hideHandCard() {
     this.showHandCard = false;
   }

@@ -33,7 +33,14 @@ export class CardDeckComponent implements OnInit {
   }
 
   pickFirstCard() {
-    this.gameService.pickFirstCard();
+    this.gameService.pickFirstCard(); 
+    this.pickPlayingCard();
+  }
+  // AU PREMIER CLIC
+  // > on envoie la 1ère carte du jeu dans la timeline
+  @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
+  sendingfirstCard() {
+    this.firstCardEmitter.emit(this.firstCard);
   }
 
   // > on lance le timer
@@ -50,7 +57,7 @@ export class CardDeckComponent implements OnInit {
   sendingplayingCard() {
     this.playingCardEmitter.emit(this.playingCard);
   }
-
+  
   pickPlayingCard() {
     if (!this.stopTimer) {
       let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
@@ -64,4 +71,7 @@ export class CardDeckComponent implements OnInit {
     }
   }
 
+  recievedStopTimer() {
+    this.stopTimer = true;
+  }
 }

@@ -22,6 +22,9 @@ export class GameService {
   public getTimelineDeck() {
     return this.timelineDeck;
   }
+  public getCardDeck() {
+    return this.cardDeck;
+  }
 
   public getMovies(): Card[] {
     this.moviesService.getMovies().subscribe((response) => {

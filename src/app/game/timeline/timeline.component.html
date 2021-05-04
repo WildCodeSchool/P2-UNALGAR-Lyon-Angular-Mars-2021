@@ -21,7 +21,5 @@
 
 <div class="message alert" [ngClass]="isDateRight ? 'alert-success':'alert-danger'" *ngIf="displayMessage">
     <div *ngIf="isDateRight">Bravo !</div>
-    <div *ngIf="!isDateRight">Faux</div>
+    <div *ngIf="!isDateRight">Faux, c'était en {{ playingCard.date }}</div>
 </div>
-
-<!-- mettre en place une carte debut et une carte fin // NON CAR DANS TIMELINE-->

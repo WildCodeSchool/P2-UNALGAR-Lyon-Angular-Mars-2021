@@ -24,7 +24,7 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {}
 
   playingCard: Card;
-
+  firstCard: Card;
   //la fonction doit reset la timeline mais elle renvoie aussi a l'accueil
   resetGoBackHome() {
     //je reset les cartes de la timeline

@@ -6,8 +6,12 @@ button {
   border-radius: 30px;
   border: none;
   font-size: 20px;
-  cursor: pointer;
+  cursor: auto;
   color: white;
+}
+
+.startingButton {
+  cursor: pointer;
 }
 
 button:focus {
