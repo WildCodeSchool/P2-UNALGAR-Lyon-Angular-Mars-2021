@@ -34,7 +34,7 @@ export class GameService {
     return this.cardDeck;
   }
 
-  private movieIntoCard(movie: Movie): Card {
+  movieIntoCard(movie: Movie): Card {
     this.slicedMovieDate = movie.release_date.slice(0, 4);
     this.completeMovieImgUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
     this.movieConverted = new Card(
@@ -44,14 +44,4 @@ export class GameService {
     );
     return this.movieConverted;
   }
-
-  resetAllGame():void{
-    this.cardDeck.splice(0)
-    this.timelineDeck.splice(0)
-
-
-  }
-
 }
-
-

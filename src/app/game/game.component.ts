@@ -5,8 +5,6 @@ import { CardDeckComponent } from "./card-deck/card-deck.component";
 import { HandComponent } from "./hand/hand.component";
 import { Card } from "../common/card.model";
 import { MoviesService } from "../common/movies.service";
-import { GameService } from "../common/game.service";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-game",
@@ -15,28 +13,15 @@ import { Router } from "@angular/router";
 })
 export class GameComponent implements OnInit {
   public timelineDeck: Card[] = [];
-  public hasBeenClicked: boolean = true;
 
   // INJECTION DU SERVICE
 
-  constructor(private gameService: GameService, private router: Router) {}
-  
+  constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {}
 
   playingCard: Card;
   firstCard: Card;
-//la fonction doit reset la timeline mais elle renvoie aussi a l'accueil
-  resetGoBackHome(){
-//je reset les cartes de la timeline
-  this.gameService.resetAllGame()
-
-// je redirige vers l'accueil
-
-this.router.navigate([""])
-
-    
-  }
 
   onReceiveplayingCard($event: Card) {
     this.playingCard = $event;
