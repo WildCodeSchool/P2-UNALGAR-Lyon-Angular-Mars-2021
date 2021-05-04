@@ -20,6 +20,9 @@ export class GameService {
   public getTimelineDeck() {
     return this.timelineDeck;
   }
+  public getCardDeck() {
+    return this.cardDeck;
+  }
 
   public addCardToTimeline(card: Card) {
     this.timelineDeck.push(card);
