@@ -1,62 +1,79 @@
 .scroller {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    overflow-y: auto;
-    position: relative;
-    background-color: wheat;
-    min-height: 300px;
-    width: 100%;
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  overflow-y: auto;
+  scroll-snap-align: inherit;
+  background-color: rgb(211, 181, 125);
+  min-height: 320px;
+  opacity: 0.9;
+  width: 100%;
+}
+
+.cardBlock {
+  margin: 0 auto;
+  display: flex;
 }
 
 .timelineCard {
-    background: #b0bec5;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    font-weight: bold;
-    height: 300px;
-    width: 200px;
-    align-items: center;
-    justify-content: flex-end;
+  background: #b0bec5;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: bold;
+  height: 300px;
+  width: 200px;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 10px;
 }
 
 .encart {
-    background-color: gray;
-    color: white;
-    text-align: center;
-    word-break: break-word;
-    font-size: 16px;
-    width: 100%;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  word-break: break-word;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
 }
 
 .encart p {
-    margin: 0;
+  margin: 0;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
+  font-family: "Russo One", sans-serif;
+  color: white;
+  font-size: 30px;
 }
 
 .timelineDiv {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .emptySpace {
-    background: black;
-    border-radius: 50%;
-    opacity: 0.5;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    margin: 10px;
+  background: black;
+  border-radius: 50%;
+  opacity: 0.5;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  margin: 10px;
+  border: green solid;
 }
 
 .validation {
-    text-align: center;
+  text-align: center;
+}
+
+.message {
+  margin: 10px auto;
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+  border: 1px solid;
 }

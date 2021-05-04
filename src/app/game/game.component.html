@@ -1,10 +1,10 @@
-<app-timer #timer></app-timer>
-<app-timeline [playingCard]="playingCard"></app-timeline>
+<app-timer> </app-timer>
+<app-timeline #timeline [playingCard]="playingCard"></app-timeline>
 <div class="bottom-menu">
-    <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)" (startTimerEmitter)="timer.startTimer()" (showHandCardEmitter)="hand.displayHandCard()" (firstCardEmitter)="onReceivefirstCard($event)"></app-card-deck>
+    <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)" (showHandCardEmitter)="hand.displayHandCard()"></app-card-deck>
     <app-hand #hand [playingCard]="playingCard"></app-hand>
 </div>
 
-<button (click)="hand.hideHandCard(); cardDeck.resetPioche(); resetGoBackHome()">
+<button (click)="confirmeRetour() &&  cardDeck.resetPioche() && resetGoBackHome()">
   <img src="../../assets/img/leftArrow1.png" />
 </button>
