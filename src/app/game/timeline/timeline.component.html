@@ -15,6 +15,11 @@
         <div *ngIf="last">
             <li (click)="addToTimelineRightSide(card)" class="emptySpace"></li>
         </div>
-        
+
     </div>
 </ul>
+
+<div class="message alert" [ngClass]="isDateRight ? 'alert-success':'alert-danger'" *ngIf="displayMessage">
+    <div *ngIf="isDateRight">Bravo !</div>
+    <div *ngIf="!isDateRight">Faux</div>
+</div>

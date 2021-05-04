@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  ɵɵtrustConstantResourceUrl,
-  ɵCodegenComponentFactoryResolver,
-} from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { GameService } from "src/app/common/game.service";
 import { Card } from "../../common/card.model";
 

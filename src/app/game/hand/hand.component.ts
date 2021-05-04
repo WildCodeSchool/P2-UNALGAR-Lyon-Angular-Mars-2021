@@ -9,7 +9,7 @@ import { CardDeckComponent } from "../card-deck/card-deck.component";
 export class HandComponent implements OnInit {
   @Input() playingCard: Card;
   @Output() hasGameStartedEmitter: EventEmitter<boolean> = new EventEmitter();
-  
+
   public showHandCard: boolean = false;
 
   constructor() {}
@@ -17,7 +17,9 @@ export class HandComponent implements OnInit {
   ngOnInit(): void {}
 
   displayHandCard() {
-  this.showHandCard = true;
+    this.showHandCard = true;
   }
-
+  hideHandCard() {
+    this.showHandCard = false;
+  }
 }
