@@ -35,7 +35,7 @@ export class TimelineComponent implements OnInit {
   @Output() rightClick: EventEmitter<any> = new EventEmitter();
 
   addToTimelineRightSide(card: Card) {
-    if (!this.stopTimer) {
+    if (!this.gameService.stopTimer) {
       // On va chercher l'indice de la carte à gauche de l'emplacement choisi
       let leftCardIndex: number = this.timelineDeck.indexOf(card);
       //On définit ce que sera l'indice de playingCard dans la timeline
@@ -50,7 +50,7 @@ export class TimelineComponent implements OnInit {
   // on veut validé la carte si elle est supérieur
 
   addToTimelineLeftSide(card: Card) {
-    if (!this.stopTimer) {
+    if (!this.gameService.stopTimer) {
       // On va chercher l'indice de la carte à droite de l'emplacement choisi
       let rightCardIndex: number = this.timelineDeck.indexOf(card);
       //On définit ce que sera l'indice de playingCard dans la timeline
@@ -109,7 +109,7 @@ export class TimelineComponent implements OnInit {
   }
 
   pickPlayingCard() {
-    if (!this.stopTimer) {
+    if (!this.gameService.stopTimer) {
       let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
       this.playingCard = this.cardDeck[randomIndex];
       this.cardDeck.splice(randomIndex, 1);
@@ -117,18 +117,6 @@ export class TimelineComponent implements OnInit {
       if (this.cardDeck.length === 0) {
         this.gameService.getMovies();
       }
-    }
-  }
-
-  recievedStopTimer() {
-    this.stopTimer = true;
-    this.showScoreTotal();
-  }
-
-  showScoreTotal(){
-    if(!this.displayScoreTotal) {
-      this.scoreTotal = this.timelineDeck.length - 1;
-      alert(`Ton score est : ${this.scoreTotal}`)
     }
   }
 }

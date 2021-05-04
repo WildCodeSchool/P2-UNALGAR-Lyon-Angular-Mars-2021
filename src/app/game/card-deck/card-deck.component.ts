@@ -59,7 +59,7 @@ export class CardDeckComponent implements OnInit {
   }
   
   pickPlayingCard() {
-    if (!this.stopTimer) {
+    if (!this.gameService.stopTimer) {
       let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
       this.playingCard = this.cardDeck[randomIndex];
       this.cardDeck.splice(randomIndex, 1);
@@ -69,9 +69,5 @@ export class CardDeckComponent implements OnInit {
         this.gameService.getMovies();
       }
     }
-  }
-
-  recievedStopTimer() {
-    this.stopTimer = true;
   }
 }

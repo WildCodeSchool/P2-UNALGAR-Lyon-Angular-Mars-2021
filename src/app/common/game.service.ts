@@ -15,6 +15,8 @@ export class GameService {
   public movieConverted: Card;
   public completeMovieImgUrl: string;
   public hasGameStarted: BooleanObject = { value: false };
+  public stopTimer: boolean = false;
+  public scoreTotal: number;
 
   //On injecte le service gérant l'API
   constructor(private moviesService: MoviesService) {}
@@ -53,7 +55,7 @@ export class GameService {
 
   //TIMER DEBUT
   public lancement: BooleanObject = { value: false };
-  public temps: number = 300;
+  public temps: number = 3;
   public interval: any;
 
   public timerObject = new TimerObject(
@@ -83,6 +85,8 @@ export class GameService {
         ) {
           clearInterval(this.interval);
           this.timerObject.displayZero = "0";
+          this.stopTimer = true;
+          this.showScoreTotal();
         }
       }, 1000);
       this.lancement.value = true;
@@ -90,6 +94,17 @@ export class GameService {
   }
 
   //TIMER FIN
+
+// DEBUT SCORE 
+
+showScoreTotal(){
+  if(this.stopTimer) {
+    this.scoreTotal = this.timelineDeck.length - 1;
+    alert(`Ton score est : ${this.scoreTotal}`)
+  }
+}
+
+//FIN SCORE
 
   private movieIntoCard(movie: Movie): Card {
     this.slicedMovieDate = movie.release_date.slice(0, 4);
