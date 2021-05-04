@@ -1,7 +1,16 @@
+body {
+  background-image: url(/assets/img/gameJeux.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: black;
+  background-attachment: fixed;
+}
+
 .bottom-menu {
   display: flex;
   justify-content: space-around;
-  margin-top: 200px;
+  margin-top: 170px;
 }
 
 button {
