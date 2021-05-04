@@ -91,7 +91,7 @@ export class TimelineComponent implements OnInit {
     this.displayMessage = true;
     setTimeout(() => {
       this.displayMessage = false;
-    }, 500);
+    }, 1500);
   }
 
   recievedStopTimer() {
