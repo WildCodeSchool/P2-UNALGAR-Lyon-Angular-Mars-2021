@@ -12,14 +12,13 @@ import { CardDeckComponent } from "../card-deck/card-deck.component";
 export class HandComponent implements OnInit {
   @Input() playingCard: Card;
 
-  public hasGameStarted : BooleanObject;
+  public hasGameStarted : BooleanObject 
 
-  public showHandCard: ShowHandCard;
+  public showHandCard: ShowHandCard 
 
   constructor(private gameService: GameService) {
     this.hasGameStarted = this.gameService.hasGameStarted;
   }
-
 
   ngOnInit(): void {
     this.showHandCard = this.gameService.showHandCard

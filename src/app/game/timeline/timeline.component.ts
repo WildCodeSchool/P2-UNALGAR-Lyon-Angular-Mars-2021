@@ -13,8 +13,6 @@ export class TimelineComponent implements OnInit {
   public timelineDeck: Card[] = [];
   public isDateRight: boolean = false;
   public displayMessage: boolean = false;
-  public cardDeck: Card [] = [];
-
 
   @Input() playingCard: Card;
 
@@ -96,33 +94,7 @@ export class TimelineComponent implements OnInit {
     }, 500);
   }
 
-  // > on envoie les cartes tirées de la pioche vers la main du joueur
-  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
-  sendingplayingCard() {
-    this.playingCardEmitter.emit(this.playingCard);
-  }
-
-  pickPlayingCard() {
-    if (!this.stopTimer) {
-      let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
-      this.playingCard = this.cardDeck[randomIndex];
-      this.cardDeck.splice(randomIndex, 1);
-      this.sendingplayingCard();
-      if (this.cardDeck.length === 0) {
-        this.gameService.getMovies();
-      }
-    }
-  }
-
   recievedStopTimer() {
     this.stopTimer = true;
-    this.showScoreTotal();
-  }
-
-  showScoreTotal(){
-    if(!this.displayScoreTotal) {
-      this.scoreTotal = this.timelineDeck.length - 1;
-      alert(`Ton score est : ${this.scoreTotal}`)
-    }
   }
 }
