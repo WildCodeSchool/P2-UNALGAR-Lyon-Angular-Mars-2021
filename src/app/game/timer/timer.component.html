@@ -1,6 +1,1 @@
 <span [class.timer]="lancement">0{{minute}}:{{displayZero}}{{second}}</span>
-
-<div class="message alert" [ngClass]="isDateRight ? 'alert-success':'alert-danger'" *ngIf="displayMessage">
-  <div *ngIf="isDateRight">Bravo !</div>
-  <div *ngIf="!isDateRight">Faux</div>
-</div>
