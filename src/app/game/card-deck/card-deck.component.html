@@ -1,4 +1,4 @@
 <div *ngIf="!hasGameStarted">
-  <button (click)="pickFirstCard()">Commence à jouer !</button>
+  <button class="startingButton" (click)="pickFirstCard()">Commence à jouer !</button>
 </div>
 <div *ngIf="hasGameStarted"><button (click)="pickPlayingCard()">Pioche</button></div>
