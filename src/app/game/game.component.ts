@@ -37,10 +37,13 @@ export class GameComponent implements OnInit {
 
 // je redirige vers l'accueil
 
+
 this.router.navigate([""])
 
     
   }
+
+
 
   onReceiveplayingCard($event: Card) {
     this.playingCard = $event;
