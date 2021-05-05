@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { Card } from "../../common/card.model";
 import { GameService } from "src/app/common/game.service";
+import { Status } from "src/app/common/status.model";
 @Component({
   selector: "app-card-deck",
   templateUrl: "./card-deck.component.html",
@@ -8,14 +9,11 @@ import { GameService } from "src/app/common/game.service";
 })
 export class CardDeckComponent implements OnInit {
   //Initialisation des variables
-
-  stopTimer: boolean = false;
   timer: string;
   hand: string;
-  @Output() lancementTimer: EventEmitter<string> = new EventEmitter();
   playingCard: Card;
   firstCard: Card;
-  @Output() hasGameStarted: boolean = false;
+  public hasGameStarted: Status;
   public cardDeck: Card[] = [];
 
   // INJECTION DES SERVICES
@@ -23,33 +21,21 @@ export class CardDeckComponent implements OnInit {
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.cardDeck = this.gameService.getMovies();
+    // on charge les films
+    this.gameService.getMovies();
+    // on recup la liste
+    this.cardDeck = this.gameService.getCardDeck()
+    this.hasGameStarted = this.gameService.hasGameStarted;
   }
 
-  // AU PREMIER CLIC
-  // > on envoie la 1ère carte du jeu dans la timeline
-  @Output() firstCardEmitter: EventEmitter<Card> = new EventEmitter();
-  sendingfirstCard() {
-    this.firstCardEmitter.emit(this.firstCard);
-  }
-
-  resetPioche() {
-    this.hasGameStarted = false;
+  resetPioche() : boolean {
+    this.hasGameStarted.value = false;
+    return true;
   }
 
   pickFirstCard() {
-    let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
-    this.firstCard = this.cardDeck[randomIndex];
-    this.cardDeck.splice(randomIndex, 1);
-    this.gameService.addCardToTimeline(this.firstCard);
-    this.hasGameStarted = true;
-    this.startTimerEmitter.emit(null);
+    this.gameService.pickFirstCard(); 
     this.pickPlayingCard();
-  }
-  // > on lance le timer
-  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
-  startTimer() {
-    this.lancementTimer.emit(this.timer);
   }
 
   //AU DEUXIEME CLIC et ensuite
@@ -62,19 +48,14 @@ export class CardDeckComponent implements OnInit {
   }
   
   pickPlayingCard() {
-    if (!this.stopTimer) {
-      let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
-      this.playingCard = this.cardDeck[randomIndex];
-      this.cardDeck.splice(randomIndex, 1);
-      this.sendingplayingCard();
-      this.showHandCardEmitter.emit(true);
-      if (this.cardDeck.length === 0) {
-        this.gameService.getMovies();
-      }
+    let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
+    this.playingCard = this.cardDeck[randomIndex];
+    this.cardDeck.splice(randomIndex, 1);
+    this.sendingplayingCard();
+    this.showHandCardEmitter.emit(true);
+    if (this.cardDeck.length === 0) {
+      this.gameService.getMovies();
     }
-  }
 
-  recievedStopTimer() {
-    this.stopTimer = true;
   }
 }

@@ -15,23 +15,19 @@ import { Router } from "@angular/router";
 })
 export class GameComponent implements OnInit {
   public timelineDeck: Card[] = [];
-  public hasBeenClicked: boolean = true;
+  playingCard: Card;
+  firstCard: Card;
 
   // INJECTION DU SERVICE
-
   constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  playingCard: Card;
-  firstCard: Card;
   //la fonction doit reset la timeline mais elle renvoie aussi a l'accueil
   resetGoBackHome() {
     //je reset les cartes de la timeline
     this.gameService.resetAllGame();
-
     // je redirige vers l'accueil
-
     this.router.navigate([""]);
   }
 
@@ -39,7 +35,7 @@ export class GameComponent implements OnInit {
     this.playingCard = $event;
   }
 
-  onReceivefirstCard($event: Card) {
-    this.firstCard = $event;
+  confirmeRetour():boolean{
+    return confirm("Désirez-vous vraiment quitter?")
   }
 }

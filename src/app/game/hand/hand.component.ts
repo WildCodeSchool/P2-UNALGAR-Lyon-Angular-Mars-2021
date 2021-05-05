@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { GameService } from "src/app/common/game.service";
+import { Status } from "src/app/common/status.model";
 import { Card } from "../../common/card.model";
 import { CardDeckComponent } from "../card-deck/card-deck.component";
 @Component({
@@ -8,18 +10,12 @@ import { CardDeckComponent } from "../card-deck/card-deck.component";
 })
 export class HandComponent implements OnInit {
   @Input() playingCard: Card;
-  @Output() hasGameStartedEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  public showHandCard: boolean = false;
+  public showHandCard: Status;
 
-  constructor() {}
+  constructor(private gameservice: GameService) {}
 
-  ngOnInit(): void {}
-
-  displayHandCard() {
-    this.showHandCard = true;
-  }
-  hideHandCard() {
-    this.showHandCard = false;
+  ngOnInit(): void {
+    this.showHandCard = this.gameservice.hasGameStarted
   }
 }

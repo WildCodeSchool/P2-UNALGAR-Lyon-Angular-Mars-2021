@@ -1,4 +1,4 @@
-<div *ngIf="!hasGameStarted">
+<div *ngIf="!hasGameStarted.value">
   <button class="startingButton" (click)="pickFirstCard()">Commence à jouer !</button>
 </div>
-<div *ngIf="hasGameStarted"><button></button></div>
+<div *ngIf="hasGameStarted.value"><button></button></div>

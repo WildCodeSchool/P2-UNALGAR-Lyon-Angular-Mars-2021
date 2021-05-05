@@ -1,3 +1,5 @@
 */node_modules/*
-*/.DS_Store/*
+*/.DS_Store
 
+node_modules/__ngcc_entry_points__.json
+node_modules/.cli-ngcc/c85a256d5acbc71e7f8d97896f3d913cde57311ac5163a2518dcd5965a20b37a.lock
