@@ -14,7 +14,7 @@ export class MoviesService {
 
   constructor(private service: HttpClient) {}
 
-  private pageCounter: number = 0;
+  private pageCounter: number = 1;
 
   //On requête l'API pour obtenir les films
 
