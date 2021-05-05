@@ -13,8 +13,9 @@ export class MoviesService {
   private baseUrl: string = "https://api.themoviedb.org/3/movie";
 
   constructor(private service: HttpClient) {}
-
-  private pageCounter: number = 1;
+// On commence à 0 car dans getMovies on incrémente avent d'aller chercher les films
+// Si on le met à 1 on commencera directement à la page 2
+  private pageCounter: number = 0;
 
   //On requête l'API pour obtenir les films
 
