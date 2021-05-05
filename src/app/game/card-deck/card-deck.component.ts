@@ -28,11 +28,6 @@ export class CardDeckComponent implements OnInit {
     this.hasGameStarted = this.gameService.hasGameStarted;
   }
 
-  resetPioche() : boolean {
-    this.hasGameStarted.value = false;
-    return true;
-  }
-
   pickFirstCard() {
     this.gameService.pickFirstCard(); 
     this.pickPlayingCard();

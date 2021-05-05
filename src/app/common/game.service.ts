@@ -4,6 +4,7 @@ import { Status } from "./status.model";
 import { Movie } from "./movie.model";
 import { MoviesService } from "./movies.service";
 import { Timer } from "./timer.model";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: "root",
@@ -20,7 +21,7 @@ export class GameService {
   public showHandCard: Status = new Status(false)
 
   // Propriétés du timer 
-  public temps: number = 200;
+  public temps: number = 300;
   public interval: any;
   public timerObject : Timer = new Timer(
     Math.floor(this.temps / 60),
@@ -98,8 +99,13 @@ export class GameService {
   }
 
   showScoreTotal(){
-    alert(`Ton score est : ${this.scoreTotal}`)
-  }
+    Swal.fire({
+      icon: 'success',
+      title: 'Partie terminer',
+      text: 'Bravo ! Tu as placé ' +this.scoreTotal+ " cartes sur la timeline",
+      confirmButtonText: "Ok"
+    })
+      }
 
   //TIMER FIN
   private movieIntoCard(movie: Movie): Card {
