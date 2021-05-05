@@ -43,12 +43,6 @@ export class CardDeckComponent implements OnInit {
     this.firstCardEmitter.emit(this.firstCard);
   }
 
-  // > on lance le timer
-  @Output() startTimerEmitter: EventEmitter<any> = new EventEmitter();
-  startTimer() {
-    this.lancementTimer.emit(this.timer);
-  }
-
   //AU DEUXIEME CLIC et ensuite
   // > on affiche le titre de playingCard
   @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
