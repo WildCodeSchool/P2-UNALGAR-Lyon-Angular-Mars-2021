@@ -10,7 +10,7 @@
 .bottom-menu {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 170px;
+  margin-top: 110px;
 }
 
 button {
@@ -44,6 +44,7 @@ img {
 span {
   font-size: 30px;
   color: white;
+  text-shadow: 5px 5px 5px black;
   font-family: "Russo One", sans-serif;
 }
 
