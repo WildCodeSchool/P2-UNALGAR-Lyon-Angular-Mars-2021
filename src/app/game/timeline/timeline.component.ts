@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { GameService } from "src/app/common/game.service";
+import { Status } from "src/app/common/status.model";
+import { Timer } from "src/app/common/timer.model";
 import { Card } from "../../common/card.model";
 
 @Component({
@@ -11,9 +13,10 @@ export class TimelineComponent implements OnInit {
   //Initialisation des valeurs
 
   public timelineDeck: Card[] = [];
-  public isDateRight: boolean = false;
   public displayMessage: boolean = false;
   public cardDeck: Card[] = [];
+  public timerObject: Timer;
+  public isDateRight: Status;
 
   @Input() playingCard: Card;
 
@@ -30,6 +33,8 @@ export class TimelineComponent implements OnInit {
   ngOnInit(): void {
     this.timelineDeck = this.gameService.getTimelineDeck();
     this.cardDeck = this.gameService.getCardDeck();
+    this.timerObject = this.gameService.timerObject;
+    this.isDateRight = this.gameService.isDateRight;
   }
 
   @Output() rightClick: EventEmitter<any> = new EventEmitter();
@@ -64,6 +69,7 @@ export class TimelineComponent implements OnInit {
   }
 
   checkCardPosition(playingCard: Card) {
+    console.log(this.isDateRight.value);
     //capter l'index actuel de la carte
     let playingCardIndex: number = this.timelineDeck.indexOf(playingCard);
     //On va chercher la carte qui est avant (leftCard) et la carte qui est après (rightCard) notre playingCard dans la timeline
@@ -72,27 +78,33 @@ export class TimelineComponent implements OnInit {
 
     if (playingCardIndex === 0) {
       if (parseInt(playingCard.date) <= parseInt(rightCard.date)) {
-        this.isDateRight = true;
+        this.isDateRight.value = true;
       } else {
-        this.isDateRight = false;
+        this.isDateRight.value = false;
         this.timelineDeck.splice(playingCardIndex, 1);
+        //on rajoute 2 secondes de pénalité
+        this.gameService.addPenalty();
       }
     } else if (playingCardIndex === this.timelineDeck.length - 1) {
       if (parseInt(playingCard.date) >= parseInt(leftCard.date)) {
-        this.isDateRight = true;
+        this.isDateRight.value = true;
       } else {
-        this.isDateRight = false;
+        this.isDateRight.value = false;
         this.timelineDeck.splice(playingCardIndex, 1);
+        //on rajoute 2 secondes de pénalité
+        this.gameService.addPenalty();
       }
     } else {
       if (
         parseInt(playingCard.date) >= parseInt(leftCard.date) &&
         parseInt(playingCard.date) <= parseInt(rightCard.date)
       ) {
-        this.isDateRight = true;
+        this.isDateRight.value = true;
       } else {
-        this.isDateRight = false;
+        this.isDateRight.value = false;
         this.timelineDeck.splice(playingCardIndex, 1);
+        //on rajoute 2 secondes de pénalité
+        this.gameService.addPenalty();
       }
     }
 

@@ -1,30 +1,29 @@
-
 <h1>Ajoute ta carte à la timeline</h1>
 
 <div class="scroller ">
     <div class="cardBlock">
         <div *ngFor="let card of timelineDeck; let last = last" class="timelineDiv">
-        <div (click)="addToTimelineLeftSide(card)" class="emptySpace"></div>
+            <div (click)="addToTimelineLeftSide(card)" class="emptySpace"></div>
 
             <div class="timelineCard" style="background-image: url({{card.img}});">
                 <div class="encart">
-                <p>{{ card.title }}</p>
-                <p>{{ card.date}}</p>
+                    <p>{{ card.title }}</p>
+                    <p>{{ card.date}}</p>
                 </div>
             </div>
 
-                <div *ngIf="last">
+            <div *ngIf="last">
                 <div (click)="addToTimelineRightSide(card)" class="emptySpace"></div>
+            </div>
         </div>
-        </div> 
     </div>
 </div>
 
 
-    
 
 
-<div class="message alert" [ngClass]="isDateRight ? 'alert-success':'alert-danger'" *ngIf="displayMessage">
-    <div *ngIf="isDateRight">Bravo !</div>
-    <div *ngIf="!isDateRight">Faux, c'était en {{ playingCard.date }}</div>
+
+<div class="message alert" [ngClass]="isDateRight.value ? 'alert-success':'alert-danger'" *ngIf="displayMessage">
+    <div *ngIf="isDateRight.value">Bravo !</div>
+    <div *ngIf="!isDateRight.value">Faux, c'était en {{ playingCard.date }}</div>
 </div>

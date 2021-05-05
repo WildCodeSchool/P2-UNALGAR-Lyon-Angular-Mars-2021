@@ -9,20 +9,20 @@ import { Timer } from "./timer.model";
   providedIn: "root",
 })
 export class GameService {
- 
-  // Propriété du jeu en lui même 
+  // Propriété du jeu en lui même
   public cardDeck: Card[] = [];
   public timelineDeck: Card[] = [];
   public slicedMovieDate: string;
   public movieConverted: Card;
   public completeMovieImgUrl: string;
   public hasGameStarted: Status = new Status(false);
-  public showHandCard: Status = new Status(false)
+  public showHandCard: Status = new Status(false);
+  public isDateRight: Status = new Status(false);
 
-  // Propriétés du timer 
-  public temps: number = 200;
+  // Propriétés du timer
+  public temps: number = 300;
   public interval: any;
-  public timerObject : Timer = new Timer(
+  public timerObject: Timer = new Timer(
     Math.floor(this.temps / 60),
     this.temps % 60,
     ""
@@ -30,12 +30,9 @@ export class GameService {
 
   // score
   public scoreTotal: number;
-  
 
   //On injecte le service gérant l'API
-  constructor(private moviesService: MoviesService) {
-    
-  }
+  constructor(private moviesService: MoviesService) {}
 
   public getTimelineDeck() {
     return this.timelineDeck;
@@ -91,14 +88,14 @@ export class GameService {
         this.timerObject.displayZero = "0";
         // Calcul du score
         this.scoreTotal = this.timelineDeck.length - 1;
-        this.resetAllGame()
+        this.resetAllGame();
         this.showScoreTotal();
       }
     }, 1000);
   }
 
-  showScoreTotal(){
-    alert(`Ton score est : ${this.scoreTotal}`)
+  showScoreTotal() {
+    alert(`Ton score est : ${this.scoreTotal}`);
   }
 
   //TIMER FIN
@@ -117,19 +114,27 @@ export class GameService {
     this.cardDeck.splice(0);
     this.timelineDeck.splice(0);
     this.hideHandCard();
-    this.hasGameStarted.value = false  
+    this.hasGameStarted.value = false;
     clearInterval(this.interval);
     this.getMovies();
-    this.initTimer()
+    this.initTimer();
   }
 
-  initTimer(){
-    this.timerObject.minute = Math.floor(this.temps / 60)
-    this.timerObject.second = this.temps % 60
+  initTimer() {
+    this.timerObject.minute = Math.floor(this.temps / 60);
+    this.timerObject.second = this.temps % 60;
   }
 
   hideHandCard() {
-    this.showHandCard.value = false
+    this.showHandCard.value = false;
   }
-  
+
+  addPenalty() {
+    this.timerObject.second -= 2;
+    if (this.timerObject.second < 0) {
+      this.timerObject.displayZero = "";
+      this.timerObject.second = 59;
+      this.timerObject.minute--;
+    }
+  }
 }
