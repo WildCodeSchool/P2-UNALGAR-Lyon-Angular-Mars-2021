@@ -82,4 +82,16 @@ h1 {
   margin-right: auto;
   text-align: center;
   width: 20%;
+  background-color: transparent;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+span {
+  font-size: 30px;
+  color: white;
+  font-family: "Russo One", sans-serif;
 }

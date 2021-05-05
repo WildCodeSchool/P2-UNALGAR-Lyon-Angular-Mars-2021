@@ -1,11 +1,25 @@
 <div id="jeux">
   <app-timer></app-timer>
   <app-timeline #timeline [playingCard]="playingCard" (playingCardEmitter)="onReceiveplayingCard($event)"></app-timeline>
+  
   <div class="bottom-menu">
-    <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)"></app-card-deck>
-    <app-hand #hand [playingCard]="playingCard"></app-hand>
-  </div>
 
+
+    
+      
+    <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)"></app-card-deck>
+    <div class="test">
+      <div *ngFor="let msg of listeMessage">
+        <div class="message">
+          <div *ngIf="msg.typeReponse"><img src="/assets/img/super.png"></div>
+          <div *ngIf="!msg.typeReponse"><img src="/assets/img/pikachu.png"><br><span>C'était en {{msg.textReponse}}</span></div>
+        </div>
+      </div>
+      </div>
+    <app-hand #hand [playingCard]="playingCard"></app-hand>
+
+  </div>
+  
   <button (click)="confirmeRetour() && cardDeck.resetPioche() && resetGoBackHome()">
     <img src="../../assets/img/leftArrow1.png" />
   </button>

@@ -1,4 +1,4 @@
-#jeux{
+#jeux {
   background-image: url(/assets/img/gameJeux.jpg);
   background-size: contain;
   background-repeat: no-repeat;
@@ -34,4 +34,23 @@ button > img {
 
 button:focus {
   outline: 0;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+span {
+  font-size: 30px;
+  color: white;
+  font-family: "Russo One", sans-serif;
+}
+
+.test {
+  border: yellow solid;
+  background-color: yellow;
+  margin-bottom: 100px;
+  width: 100%;
+  position: relative;
 }
