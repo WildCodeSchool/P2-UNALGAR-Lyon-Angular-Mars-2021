@@ -5,8 +5,9 @@
 
   <div class="bottom-menu">
 
-    <app-card-deck #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)"></app-card-deck>
-    <div class="test">
+    <app-card-deck class="center" #cardDeck (playingCardEmitter)="onReceiveplayingCard($event)"></app-card-deck>
+
+    <div class="test center">
       <div *ngFor="let msg of listeMessage">
         <div class="message">
           <div *ngIf="msg.typeReponse"><img src="/assets/img/super.png"></div>
@@ -15,11 +16,12 @@
         </div>
       </div>
     </div>
-    <app-hand #hand [playingCard]="playingCard"></app-hand>
+
+    <app-hand class="center" #hand [playingCard]="playingCard"></app-hand>
 
   </div>
 
   <button (click)="confirmeRetour()">
-    <img src="../../assets/img/leftArrow1.png" />
+    <img class="backHome" src="../../assets/img/leftArrow1.png" />
   </button>
 </div>

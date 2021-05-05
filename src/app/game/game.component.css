@@ -8,8 +8,8 @@
 }
 
 .bottom-menu {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 170px;
 }
 
@@ -47,10 +47,11 @@ span {
   font-family: "Russo One", sans-serif;
 }
 
-.test {
-  border: yellow solid;
-  background-color: yellow;
-  margin-bottom: 100px;
-  width: 100%;
-  position: relative;
+.backHome {
+  width: 50px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
