@@ -4,38 +4,35 @@ import { Status } from "./status.model";
 import { Movie } from "./movie.model";
 import { MoviesService } from "./movies.service";
 import { Timer } from "./timer.model";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: "root",
 })
 export class GameService {
- 
-  // Propriété du jeu en lui même 
+  // Propriété du jeu
   public cardDeck: Card[] = [];
   public timelineDeck: Card[] = [];
   public slicedMovieDate: string;
   public movieConverted: Card;
   public completeMovieImgUrl: string;
   public hasGameStarted: Status = new Status(false);
-  public showHandCard: Status = new Status(false)
+  public showHandCard: Status = new Status(false);
+  public isDateRight: Status = new Status(false);
+  public scoreTotal: number;
+  public firstCard: Card;
 
-  // Propriétés du timer 
-  public temps: number = 200;
+  // Propriétés du timer
+  public temps: number = 300;
   public interval: any;
-  public timerObject : Timer = new Timer(
+  public timerObject: Timer = new Timer(
     Math.floor(this.temps / 60),
     this.temps % 60,
     ""
   );
 
-  // score
-  public scoreTotal: number;
-  
-
-  //On injecte le service gérant l'API
-  constructor(private moviesService: MoviesService) {
-    
-  }
+  //Injection du service gérant l'API
+  constructor(private moviesService: MoviesService) {}
 
   public getTimelineDeck() {
     return this.timelineDeck;
@@ -53,9 +50,24 @@ export class GameService {
     return this.cardDeck;
   }
 
-  public firstCard: Card;
+  // Formatage des films en cards
+  private movieIntoCard(movie: Movie): Card {
+    this.slicedMovieDate = movie.release_date.slice(0, 4);
+    this.completeMovieImgUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
+    this.movieConverted = new Card(
+      movie.title,
+      this.slicedMovieDate,
+      this.completeMovieImgUrl
+    );
+    return this.movieConverted;
+  }
 
-  // permet de tirer une 1ère carte aléatoire et de la mettre dans la timeline
+  // ajouter une carte dans la timeline
+  public addCardToTimeline(card: Card) {
+    this.timelineDeck.push(card);
+  }
+
+  // permet de tirer une 1ère carte aléatoire et de l'ajouter à la timeline
   public pickFirstCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.firstCard = this.cardDeck[randomIndex];
@@ -65,10 +77,7 @@ export class GameService {
     this.startTimer();
   }
 
-  public addCardToTimeline(card: Card) {
-    this.timelineDeck.push(card);
-  }
-
+  // lance le timer quand clic sur le bouton "commence à jouer"
   startTimer() {
     this.interval = setInterval(() => {
       this.timerObject.displayZero = "";
@@ -91,45 +100,48 @@ export class GameService {
         this.timerObject.displayZero = "0";
         // Calcul du score
         this.scoreTotal = this.timelineDeck.length - 1;
-        this.resetAllGame()
+        this.resetAllGame();
         this.showScoreTotal();
       }
     }, 1000);
   }
 
-  showScoreTotal(){
-    alert(`Ton score est : ${this.scoreTotal}`)
-  }
-
-  //TIMER FIN
-  private movieIntoCard(movie: Movie): Card {
-    this.slicedMovieDate = movie.release_date.slice(0, 4);
-    this.completeMovieImgUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
-    this.movieConverted = new Card(
-      movie.title,
-      this.slicedMovieDate,
-      this.completeMovieImgUrl
-    );
-    return this.movieConverted;
+  // display le score total à la fin du jeu
+  showScoreTotal() {
+    Swal.fire({
+      icon: "success",
+      title: "Partie terminée",
+      text:
+        "Bravo ! Tu as placé " + this.scoreTotal + " cartes sur la timeline",
+      confirmButtonText: "Ok",
+    });
   }
 
   resetAllGame(): void {
     this.cardDeck.splice(0);
     this.timelineDeck.splice(0);
     this.hideHandCard();
-    this.hasGameStarted.value = false  
+    this.hasGameStarted.value = false;
     clearInterval(this.interval);
     this.getMovies();
-    this.initTimer()
+    this.initTimer();
   }
 
-  initTimer(){
-    this.timerObject.minute = Math.floor(this.temps / 60)
-    this.timerObject.second = this.temps % 60
+  initTimer() {
+    this.timerObject.minute = Math.floor(this.temps / 60);
+    this.timerObject.second = this.temps % 60;
   }
 
   hideHandCard() {
-    this.showHandCard.value = false
+    this.showHandCard.value = false;
   }
-  
+
+  addPenalty() {
+    this.timerObject.second -= 2;
+    if (this.timerObject.second < 0) {
+      this.timerObject.displayZero = "";
+      this.timerObject.second = 59;
+      this.timerObject.minute--;
+    }
+  }
 }

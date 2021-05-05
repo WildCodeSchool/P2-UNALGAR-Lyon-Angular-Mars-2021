@@ -1,2 +1,2 @@
-
-<span>0{{timerObject.minute}}:{{timerObject.displayZero}}{{timerObject.second}}</span>
+<span [ngClass]="{'warning' : !isDateRight.value}"
+  [ngClass]="hasGameStarted.value? 'warning':''">0{{timerObject.minute}}:{{timerObject.displayZero}}{{timerObject.second}}</span>

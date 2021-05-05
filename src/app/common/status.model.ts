@@ -1,3 +1,4 @@
+//Permet de dynamiser des booléens et de les utiliser entre composants
 export class Status {
     value: boolean
 

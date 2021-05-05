@@ -24,29 +24,24 @@ export class CardDeckComponent implements OnInit {
     // on charge les films
     this.gameService.getMovies();
     // on recup la liste
-    this.cardDeck = this.gameService.getCardDeck()
+    this.cardDeck = this.gameService.getCardDeck();
     this.hasGameStarted = this.gameService.hasGameStarted;
   }
 
-  resetPioche() : boolean {
-    this.hasGameStarted.value = false;
-    return true;
-  }
-
   pickFirstCard() {
-    this.gameService.pickFirstCard(); 
+    this.gameService.pickFirstCard();
     this.pickPlayingCard();
   }
 
-  //AU DEUXIEME CLIC et ensuite
   // > on affiche le titre de playingCard
   @Output() showHandCardEmitter: EventEmitter<boolean> = new EventEmitter();
+
   // > on envoie les cartes tirées de la pioche vers la main du joueur
   @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
   sendingplayingCard() {
     this.playingCardEmitter.emit(this.playingCard);
   }
-  
+
   pickPlayingCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.playingCard = this.cardDeck[randomIndex];
@@ -56,6 +51,5 @@ export class CardDeckComponent implements OnInit {
     if (this.cardDeck.length === 0) {
       this.gameService.getMovies();
     }
-
   }
 }

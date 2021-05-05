@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 import { MessageService } from "../common/message.service";
 import { Message } from "../common/message.model";
 
+import Swal from "sweetalert2";
 @Component({
   selector: "app-game",
   templateUrl: "./game.component.html",
@@ -17,31 +18,47 @@ import { Message } from "../common/message.model";
 })
 export class GameComponent implements OnInit {
   public timelineDeck: Card[] = [];
-  public listeMessage: Message []
-  
+  public listeMessage: Message[];
+
   playingCard: Card;
   firstCard: Card;
 
   // INJECTION DU SERVICE
-  constructor(private gameService: GameService, private router: Router, private messageService:MessageService) {}
+  constructor(
+    private gameService: GameService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
-    this.listeMessage = this.messageService.listeMessage
+    this.listeMessage = this.messageService.listeMessage;
   }
 
   //la fonction doit reset la timeline mais elle renvoie aussi a l'accueil
-  resetGoBackHome() {
+  resetGoBackHome(): void {
     //je reset les cartes de la timeline
     this.gameService.resetAllGame();
     // je redirige vers l'accueil
     this.router.navigate([""]);
   }
 
-  onReceiveplayingCard($event: Card) {
+  onReceiveplayingCard($event: Card): void {
     this.playingCard = $event;
   }
 
-  confirmeRetour():boolean{
-    return confirm("Désirez-vous vraiment quitter?")
+  confirmeRetour(): void {
+    Swal.fire({
+      title: "Voulez-vous vraiment quitter la partie ?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, je veux quitter la partie",
+      cancelButtonText: "Non, je veux rester",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.resetGoBackHome();
+      }
+    });
   }
 }
