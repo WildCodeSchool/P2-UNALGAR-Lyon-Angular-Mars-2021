@@ -2,12 +2,17 @@ button {
   background-image: url(/assets/img/unalgarLogo.jpg);
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: top 20px center;
   height: 240px;
   width: 160px;
   border-radius: 10px;
   cursor: auto;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: white;
+  font-size: 22px;
+  font-family: "Russo One", sans-serif;
 }
 
 .startingButton {
