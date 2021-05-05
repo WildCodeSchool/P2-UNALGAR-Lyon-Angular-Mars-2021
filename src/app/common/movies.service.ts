@@ -13,11 +13,10 @@ export class MoviesService {
   private baseUrl: string = "https://api.themoviedb.org/3/movie";
 
   constructor(private service: HttpClient) {}
-
+  // On commence les requêtes à la page 1 pour éviter certains films
   private pageCounter: number = 1;
 
   //On requête l'API pour obtenir les films
-
   public getMovies(): Observable<Movie[]> {
     this.pageCounter++;
     const movies: Observable<any> = this.service.get(
@@ -30,16 +29,3 @@ export class MoviesService {
     return movies.pipe(map(treatment));
   }
 }
-
-/*
-
-NOTES SUR L'API
-
-on va utiliser
-"title"
-"poster_path"
-"release_date" > attention, au format YYYY-MM-DD
-
-Penser à citer l'API sur le site !
-
-*/

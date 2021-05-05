@@ -7,7 +7,7 @@ import { Card } from "../common/card.model";
 import { MoviesService } from "../common/movies.service";
 import { GameService } from "../common/game.service";
 import { Router } from "@angular/router";
-
+import Swal from "sweetalert2";
 @Component({
   selector: "app-game",
   templateUrl: "./game.component.html",
@@ -24,18 +24,30 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {}
 
   //la fonction doit reset la timeline mais elle renvoie aussi a l'accueil
-  resetGoBackHome() {
+  resetGoBackHome(): void {
     //je reset les cartes de la timeline
     this.gameService.resetAllGame();
     // je redirige vers l'accueil
     this.router.navigate([""]);
   }
 
-  onReceiveplayingCard($event: Card) {
+  onReceiveplayingCard($event: Card): void {
     this.playingCard = $event;
   }
 
-  confirmeRetour():boolean{
-    return confirm("Désirez-vous vraiment quitter?")
+  confirmeRetour(): void {
+    Swal.fire({
+      title: "Voulez-vous vraiment quitter la partie ?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, je veux quitter la partie",
+      cancelButtonText: "Non, je veux rester",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.resetGoBackHome();
+      }
+    });
   }
 }

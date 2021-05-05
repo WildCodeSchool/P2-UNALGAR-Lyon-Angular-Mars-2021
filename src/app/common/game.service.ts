@@ -4,12 +4,13 @@ import { Status } from "./status.model";
 import { Movie } from "./movie.model";
 import { MoviesService } from "./movies.service";
 import { Timer } from "./timer.model";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: "root",
 })
 export class GameService {
-  // Propriété du jeu en lui même
+  // Propriété du jeu
   public cardDeck: Card[] = [];
   public timelineDeck: Card[] = [];
   public slicedMovieDate: string;
@@ -18,6 +19,8 @@ export class GameService {
   public hasGameStarted: Status = new Status(false);
   public showHandCard: Status = new Status(false);
   public isDateRight: Status = new Status(false);
+  public scoreTotal: number;
+  public firstCard: Card;
 
   // Propriétés du timer
   public temps: number = 300;
@@ -28,10 +31,7 @@ export class GameService {
     ""
   );
 
-  // score
-  public scoreTotal: number;
-
-  //On injecte le service gérant l'API
+  //Injection du service gérant l'API
   constructor(private moviesService: MoviesService) {}
 
   public getTimelineDeck() {
@@ -50,9 +50,24 @@ export class GameService {
     return this.cardDeck;
   }
 
-  public firstCard: Card;
+  // Formatage des films en cards
+  private movieIntoCard(movie: Movie): Card {
+    this.slicedMovieDate = movie.release_date.slice(0, 4);
+    this.completeMovieImgUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
+    this.movieConverted = new Card(
+      movie.title,
+      this.slicedMovieDate,
+      this.completeMovieImgUrl
+    );
+    return this.movieConverted;
+  }
 
-  // permet de tirer une 1ère carte aléatoire et de la mettre dans la timeline
+  // ajouter une carte dans la timeline
+  public addCardToTimeline(card: Card) {
+    this.timelineDeck.push(card);
+  }
+
+  // permet de tirer une 1ère carte aléatoire et de l'ajouter à la timeline
   public pickFirstCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.firstCard = this.cardDeck[randomIndex];
@@ -62,10 +77,7 @@ export class GameService {
     this.startTimer();
   }
 
-  public addCardToTimeline(card: Card) {
-    this.timelineDeck.push(card);
-  }
-
+  // lance le timer quand clic sur le bouton "commence à jouer"
   startTimer() {
     this.interval = setInterval(() => {
       this.timerObject.displayZero = "";
@@ -94,20 +106,15 @@ export class GameService {
     }, 1000);
   }
 
+  // display le score total à la fin du jeu
   showScoreTotal() {
-    alert(`Ton score est : ${this.scoreTotal}`);
-  }
-
-  //TIMER FIN
-  private movieIntoCard(movie: Movie): Card {
-    this.slicedMovieDate = movie.release_date.slice(0, 4);
-    this.completeMovieImgUrl = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;
-    this.movieConverted = new Card(
-      movie.title,
-      this.slicedMovieDate,
-      this.completeMovieImgUrl
-    );
-    return this.movieConverted;
+    Swal.fire({
+      icon: "success",
+      title: "Partie terminée",
+      text:
+        "Bravo ! Tu as placé " + this.scoreTotal + " cartes sur la timeline",
+      confirmButtonText: "Ok",
+    });
   }
 
   resetAllGame(): void {
