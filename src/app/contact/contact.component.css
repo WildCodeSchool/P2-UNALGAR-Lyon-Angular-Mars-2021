@@ -107,6 +107,11 @@ button {
   color: beige;
 }
 
+a {
+  color: beige;
+  font-weight: 700;
+}
+
 button:hover {
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
