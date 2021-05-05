@@ -69,7 +69,6 @@ export class TimelineComponent implements OnInit {
   }
 
   checkCardPosition(playingCard: Card) {
-    console.log(this.isDateRight.value);
     //capter l'index actuel de la carte
     let playingCardIndex: number = this.timelineDeck.indexOf(playingCard);
     //On va chercher la carte qui est avant (leftCard) et la carte qui est après (rightCard) notre playingCard dans la timeline
