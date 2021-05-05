@@ -1,4 +1,4 @@
-body {
+#rules {
   background-image: url(../../assets/img/unalgarRegle.jpg);
   width: 100%;
   background-attachment: fixed;
@@ -10,10 +10,8 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-
   text-align: justify;
   font-size: 30px;
-
   background-color: rgb(62, 48, 45, 0.9);
   color: beige;
 }

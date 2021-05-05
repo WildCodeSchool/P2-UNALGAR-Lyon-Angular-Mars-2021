@@ -1,5 +1,5 @@
-body {
-  background-image: url(../../assets/img/backgroundContact.jpg);
+#contact {
+  background-image: url(../../assets/img/unalgarRegle.jpg);
   width: 100%;
   background-attachment: fixed;
   background-size: cover;
@@ -11,6 +11,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  font-size: 30px;
+  background-color: rgb(62, 48, 45, 0.9);
+  color: beige;
 }
 
 h2 {
@@ -46,6 +49,7 @@ p {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding: 30px;
 }
 
 .logo {
@@ -64,6 +68,7 @@ iframe {
   display: block;
   margin-right: auto;
   margin-left: auto;
+  padding: 20px;
 }
 
 /*--------------------Formulaire------------------*/
@@ -99,6 +104,7 @@ button {
   font-size: 25px;
   padding: 10px;
   background: transparent;
+  color: beige;
 }
 
 button:hover {
