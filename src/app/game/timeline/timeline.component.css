@@ -4,7 +4,7 @@
   margin-top: 30px;
   overflow-x: auto;
   background-color: rgb(211, 181, 125);
-  min-height: 320px;
+  min-height: 350px;
   opacity: 0.9;
   width: 100%;
 }
@@ -94,4 +94,16 @@ h1 {
   margin-right: auto;
   text-align: center;
   width: 20%;
+  background-color: transparent;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+span {
+  font-size: 30px;
+  color: white;
+  font-family: "Russo One", sans-serif;
 }

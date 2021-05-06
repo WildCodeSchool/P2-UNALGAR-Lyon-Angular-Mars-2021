@@ -7,6 +7,9 @@ import { Card } from "../common/card.model";
 import { MoviesService } from "../common/movies.service";
 import { GameService } from "../common/game.service";
 import { Router } from "@angular/router";
+import { MessageService } from "../common/message.service";
+import { Message } from "../common/message.model";
+
 import Swal from "sweetalert2";
 @Component({
   selector: "app-game",
@@ -15,13 +18,21 @@ import Swal from "sweetalert2";
 })
 export class GameComponent implements OnInit {
   public timelineDeck: Card[] = [];
+  public listeMessage: Message[];
+
   playingCard: Card;
   firstCard: Card;
 
   // INJECTION DU SERVICE
-  constructor(private gameService: GameService, private router: Router) {}
+  constructor(
+    private gameService: GameService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listeMessage = this.messageService.listeMessage;
+  }
 
   //la fonction doit reset la timeline mais elle renvoie aussi a l'accueil
   resetGoBackHome(): void {
