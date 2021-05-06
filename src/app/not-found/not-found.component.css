@@ -1,12 +1,14 @@
+/* enlève toute les marges d'origine a la page*/
 *{
     margin: 0;
     padding: 0;
 }
-.not{
+/* centrer l'image en milieux de page */
+.notfound{
     text-align: center;
     height: 400px;
 }
-
+/* bouton retour a la home page */
 button {
     display: block;
     margin-left: auto;
@@ -17,7 +19,7 @@ button {
     background: transparent;
     font-family: "Russo One", sans-serif;
   }
-  
+  /* passage de la souris sur le bouton */
   button:hover {
     -webkit-transform: scale(1.3);
     transform: scale(1.3);
