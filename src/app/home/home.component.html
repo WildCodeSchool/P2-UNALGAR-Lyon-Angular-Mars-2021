@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <div class="container">
-     <div class="row">
-    <img class="col-md-10 col-sm-12 col-12"[src]="imagesrc" [alt]="name" />
+        <div class="row">
+            <img class="col-md-10 col-sm-12 col-12" [src]="imagesrc" [alt]="name" />
+        </div>
+        <div class="col-md-6 col-sm-12 col-12 buttons">
+            <button [routerLink]="['/game']">Jouer</button>
+            <button [routerLink]="['/rules']">Règles</button>
+            <button [routerLink]="['/contact']">Nous contacter</button>
+        </div>
     </div>
-    <div class="col-md-6 col-sm-12 col-12 buttons">
-    <button [routerLink]="['/game']">Jouer</button>
-    <button [routerLink]="['/rules']">Règles</button>
-    <button [routerLink]="['/contact']">Nous contacter</button>
-    </div>
-</div>
 </div>

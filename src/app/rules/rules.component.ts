@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-rules',
-  templateUrl: './rules.component.html',
-  styleUrls: ['./rules.component.css']
+  selector: "app-rules",
+  templateUrl: "./rules.component.html",
+  styleUrls: ["./rules.component.css"],
 })
 export class RulesComponent implements OnInit {
 
@@ -16,9 +16,7 @@ export class RulesComponent implements OnInit {
 
   imageButton = "../../assets/img/rightArrow.png";
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

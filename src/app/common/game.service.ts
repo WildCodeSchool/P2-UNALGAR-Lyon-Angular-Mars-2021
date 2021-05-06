@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Card } from "src/app/common/card.model";
 import { Status } from "./status.model";
 import { Movie } from "./movie.model";
@@ -23,7 +23,7 @@ export class GameService {
   public firstCard: Card;
 
   // Propriétés du timer
-  public temps: number = 300;
+  public temps: number = 60;
   public interval: any;
   public timerObject: Timer = new Timer(
     Math.floor(this.temps / 60),
@@ -62,12 +62,12 @@ export class GameService {
     return this.movieConverted;
   }
 
-  // ajouter une carte dans la timeline
+  // Ajoute une carte dans la timeline
   public addCardToTimeline(card: Card) {
     this.timelineDeck.push(card);
   }
 
-  // permet de tirer une 1ère carte aléatoire et de l'ajouter à la timeline
+  // Tire une 1ère carte aléatoire et de l'ajouter à la timeline
   public pickFirstCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.firstCard = this.cardDeck[randomIndex];
@@ -77,7 +77,7 @@ export class GameService {
     this.startTimer();
   }
 
-  // lance le timer quand clic sur le bouton "commence à jouer"
+  // Lance le timer quand clic sur le bouton "commence à jouer"
   startTimer() {
     this.interval = setInterval(() => {
       this.timerObject.displayZero = "";
@@ -106,7 +106,7 @@ export class GameService {
     }, 1000);
   }
 
-  // display le score total à la fin du jeu
+  // Display le score total à la fin du jeu
   showScoreTotal() {
       //"sweetalert2" pour plus d'info sur le pop-up.
     Swal.fire({
@@ -118,6 +118,7 @@ export class GameService {
     });
   }
 
+  // Remet à 0 le jeu (timeline, cardDeck, timer)
   resetAllGame(): void {
     this.cardDeck.splice(0);
     this.timelineDeck.splice(0);
@@ -128,16 +129,19 @@ export class GameService {
     this.initTimer();
   }
 
+  // Remet le timer à 0
   initTimer() {
     //On initialise le timer.
     this.timerObject.minute = Math.floor(this.temps / 60);
     this.timerObject.second = this.temps % 60;
   }
 
+  // Permet de ne pas afficher la main du joueur au démarrage
   hideHandCard() {
     this.showHandCard.value = false;
   }
 
+  // Ajoute 2 secondes de pénalité quand le joueur fait une erreur
   addPenalty() {
     this.timerObject.second -= 2;
     if (this.timerObject.second < 0) {

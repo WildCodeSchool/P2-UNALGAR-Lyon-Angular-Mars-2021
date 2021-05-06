@@ -1,3 +1,4 @@
+// Modèlise le timer
 export class Timer {
     public minute: number;
     public second: number;
@@ -10,4 +11,3 @@ export class Timer {
       this.displayZero = displayZero;
     }
   }
-  
