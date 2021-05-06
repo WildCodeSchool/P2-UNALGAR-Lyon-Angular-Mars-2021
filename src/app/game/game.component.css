@@ -1,4 +1,4 @@
-#jeux{
+#jeux {
   background-image: url(/assets/img/gameJeux.jpg);
   background-size: contain;
   background-repeat: no-repeat;
@@ -8,9 +8,9 @@
 }
 
 .bottom-menu {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 170px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 110px;
 }
 
 button {
@@ -34,4 +34,25 @@ button > img {
 
 button:focus {
   outline: 0;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+span {
+  font-size: 30px;
+  color: white;
+  text-shadow: 5px 5px 5px black;
+  font-family: "Russo One", sans-serif;
+}
+
+.backHome {
+  width: 50px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
