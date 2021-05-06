@@ -108,6 +108,7 @@ export class GameService {
 
   // display le score total à la fin du jeu
   showScoreTotal() {
+      //"sweetalert2" pour plus d'info sur le pop-up.
     Swal.fire({
       icon: "success",
       title: "Partie terminée",
@@ -128,6 +129,7 @@ export class GameService {
   }
 
   initTimer() {
+    //On initialise le timer.
     this.timerObject.minute = Math.floor(this.temps / 60);
     this.timerObject.second = this.temps % 60;
   }

@@ -47,6 +47,8 @@ export class GameComponent implements OnInit {
   }
 
   confirmeRetour(): void {
+    //Affichage pop-up pour quitter ou non la partie.
+    //"sweetalert2" pour plus d'info sur le pop-up.
     Swal.fire({
       title: "Voulez-vous vraiment quitter la partie ?",
       icon: "warning",
@@ -57,6 +59,7 @@ export class GameComponent implements OnInit {
       cancelButtonText: "Non, je veux rester",
     }).then((result) => {
       if (result.isConfirmed) {
+        //si le on clique sur le bouton confirmer on lance la fonction :
         this.resetGoBackHome();
       }
     });

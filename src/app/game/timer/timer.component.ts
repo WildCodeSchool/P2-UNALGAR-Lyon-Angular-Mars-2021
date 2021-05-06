@@ -16,6 +16,7 @@ export class TimerComponent implements OnInit {
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
+    //On récupere le timerObject et on l'initialise avec le timerObject du gameService.
     this.timerObject = this.gameService.timerObject;
     if (this.timerObject.second < 10) {
       this.timerObject.displayZero = "0";
