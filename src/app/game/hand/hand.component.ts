@@ -11,11 +11,14 @@ import { CardDeckComponent } from "../card-deck/card-deck.component";
 export class HandComponent implements OnInit {
   @Input() playingCard: Card;
 
+  // cette variable est de type Status (boolean) si on va regarder le status.model.ts
   public showHandCard: Status;
 
   constructor(private gameservice: GameService) {}
 
+  
   ngOnInit(): void {
+
     this.showHandCard = this.gameservice.hasGameStarted
   }
 }

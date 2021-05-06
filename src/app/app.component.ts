@@ -8,7 +8,7 @@ import { Component } from "@angular/core";
 })
 export class AppComponent  {
   title = "unalgar";
-// je créer  ma variables qui va contenir un tableau de list de films
+
 
 
 }

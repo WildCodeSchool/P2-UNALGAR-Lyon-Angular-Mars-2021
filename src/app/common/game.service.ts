@@ -116,7 +116,7 @@ export class GameService {
       confirmButtonText: "Ok",
     });
   }
-
+// cette fonction reset tout ce qui est présent dans la page game.ts
   resetAllGame(): void {
     this.cardDeck.splice(0);
     this.timelineDeck.splice(0);

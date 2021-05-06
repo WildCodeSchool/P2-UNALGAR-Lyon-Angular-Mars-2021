@@ -17,9 +17,9 @@ import Swal from "sweetalert2";
   styleUrls: ["./game.component.css"],
 })
 export class GameComponent implements OnInit {
+  // initialisation des variables
   public timelineDeck: Card[] = [];
   public listeMessage: Message[];
-
   playingCard: Card;
   firstCard: Card;
 
@@ -31,6 +31,7 @@ export class GameComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.listeMessage = this.messageService.listeMessage;
   }
 
