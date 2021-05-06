@@ -72,7 +72,7 @@ export class TimelineComponent implements OnInit {
       this.checkCardPosition(this.playingCard);
       setTimeout(() => {
         this.pickPlayingCard();
-      }, 800);
+      }, 100);
     }
   }
 

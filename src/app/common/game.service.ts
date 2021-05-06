@@ -23,7 +23,7 @@ export class GameService {
   public firstCard: Card;
 
   // Propriétés du timer
-  public temps: number = 300;
+  public temps: number = 60;
   public interval: any;
   public timerObject: Timer = new Timer(
     Math.floor(this.temps / 60),
