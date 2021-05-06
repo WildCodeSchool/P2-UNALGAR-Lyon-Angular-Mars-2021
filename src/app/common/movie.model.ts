@@ -1,3 +1,4 @@
+// Modélisation des movies tels que reçus par l'API
 export class Movie {
   public poster_path: string;
   public adult: boolean;
