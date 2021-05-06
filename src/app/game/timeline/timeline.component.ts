@@ -12,21 +12,25 @@ import { Card } from "../../common/card.model";
   styleUrls: ["./timeline.component.css"],
 })
 export class TimelineComponent implements OnInit {
-  //Initialisation des valeurs
+  //Initialisation des propriétés
 
   public timelineDeck: Card[] = [];
   public displayMessage: boolean = false;
   public cardDeck: Card[] = [];
   public timerObject: Timer;
   public isDateRight: Status;
+  stopTimer: boolean = false;
+  scoreTotal: number;
+  displayScoreTotal: boolean = false;
 
   @Input() playingCard: Card;
+  @Output() rightClick: EventEmitter<any> = new EventEmitter();
 
-  stopTimer: boolean = false;
-
-  scoreTotal: number;
-
-  displayScoreTotal: boolean = false;
+  // > on envoie les cartes tirées de la pioche vers la main du joueur
+  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
+  sendingplayingCard() {
+    this.playingCardEmitter.emit(this.playingCard);
+  }
 
   // INJECTION DES SERVICES
 
@@ -42,8 +46,7 @@ export class TimelineComponent implements OnInit {
     this.isDateRight = this.gameService.isDateRight;
   }
 
-  @Output() rightClick: EventEmitter<any> = new EventEmitter();
-
+  //La carte est ajoutée sur la droite
   addToTimelineRightSide(card: Card) {
     if (!this.stopTimer) {
       // On va chercher l'indice de la carte à gauche de l'emplacement choisi
@@ -57,8 +60,8 @@ export class TimelineComponent implements OnInit {
       }, 800);
     }
   }
-  // ont veut validé la carte si elle est supérieur
 
+  //La carte est ajoutée sur la gauche
   addToTimelineLeftSide(card: Card) {
     if (!this.stopTimer) {
       // On va chercher l'indice de la carte à droite de l'emplacement choisi
@@ -74,12 +77,13 @@ export class TimelineComponent implements OnInit {
   }
 
   checkCardPosition(playingCard: Card) {
-    //capter l'index actuel de la carte
+    //capte l'index actuel de la carte
     let playingCardIndex: number = this.timelineDeck.indexOf(playingCard);
-    //On va chercher la carte qui est avant (leftCard) et la carte qui est après (rightCard) notre playingCard dans la timeline
+    //Cherche la carte qui est avant (leftCard) et la carte qui est après (rightCard) notre playingCard dans la timeline
     let leftCard: Card = this.timelineDeck[playingCardIndex - 1];
     let rightCard: Card = this.timelineDeck[playingCardIndex + 1];
 
+    //CAS 1 : la carte est posée au tout début de la timeline
     if (playingCardIndex === 0) {
       if (parseInt(playingCard.date) <= parseInt(rightCard.date)) {
         this.isDateRight.value = true;
@@ -89,6 +93,7 @@ export class TimelineComponent implements OnInit {
         //on rajoute 2 secondes de pénalité
         this.gameService.addPenalty();
       }
+      //CAS 2 : la carte est posée à la toute fin de la timeline
     } else if (playingCardIndex === this.timelineDeck.length - 1) {
       if (parseInt(playingCard.date) >= parseInt(leftCard.date)) {
         this.isDateRight.value = true;
@@ -98,6 +103,7 @@ export class TimelineComponent implements OnInit {
         //on rajoute 2 secondes de pénalité
         this.gameService.addPenalty();
       }
+      //CAS 3 : la carte est posée entre 2 cartes
     } else {
       if (
         parseInt(playingCard.date) >= parseInt(leftCard.date) &&
@@ -121,18 +127,14 @@ export class TimelineComponent implements OnInit {
     this.stopTimer = true;
   }
 
-  // > on envoie les cartes tirées de la pioche vers la main du joueur
-  @Output() playingCardEmitter: EventEmitter<Card> = new EventEmitter();
-  sendingplayingCard() {
-    this.playingCardEmitter.emit(this.playingCard);
-  }
-
+  // Pioche une carte aléatoire, l'enlève du deck, la met dans la main du joueur
   pickPlayingCard() {
     if (!this.stopTimer) {
       let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
       this.playingCard = this.cardDeck[randomIndex];
       this.cardDeck.splice(randomIndex, 1);
       this.sendingplayingCard();
+      //si le deck est vide, charge de nouveaux films via l'API
       if (this.cardDeck.length === 0) {
         this.gameService.getMovies();
       }

@@ -42,6 +42,7 @@ export class GameComponent implements OnInit {
     this.router.navigate([""]);
   }
 
+  //Réception de la carte de jeu avant envoi dans la main du joueur
   onReceiveplayingCard($event: Card): void {
     this.playingCard = $event;
   }

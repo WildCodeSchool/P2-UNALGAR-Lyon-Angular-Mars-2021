@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Message } from './message.model';
+import { Injectable } from "@angular/core";
+import { Message } from "./message.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class MessageService {
-  listeMessage : Message [] = []
-  constructor() { }
+  listeMessage: Message[] = [];
+  constructor() {}
 
-  addMessage (message: Message){
-    this.listeMessage.push(message)
-    
+  addMessage(message: Message) {
+    this.listeMessage.push(message);
+
     setTimeout(() => {
-     this.listeMessage.shift()
+      this.listeMessage.shift();
     }, 800);
   }
 }
