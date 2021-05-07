@@ -1,3 +1,4 @@
+//Modélisation des cartes de jeu
 export class Card {
   public title: string;
   public date: string;

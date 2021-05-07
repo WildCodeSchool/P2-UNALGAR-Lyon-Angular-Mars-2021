@@ -42,12 +42,14 @@ export class CardDeckComponent implements OnInit {
     this.playingCardEmitter.emit(this.playingCard);
   }
 
+  //Pioche une carte random, l'enlève du deck, l'envoie dans la main joueur
   pickPlayingCard() {
     let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
     this.playingCard = this.cardDeck[randomIndex];
     this.cardDeck.splice(randomIndex, 1);
     this.sendingplayingCard();
     this.showHandCardEmitter.emit(true);
+    //si le deck est vide, va chercher des nouveaux films via l'API
     if (this.cardDeck.length === 0) {
       this.gameService.getMovies();
     }

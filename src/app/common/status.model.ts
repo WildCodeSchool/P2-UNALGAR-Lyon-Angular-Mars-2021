@@ -1,8 +1,8 @@
-//Permet de dynamiser des booléens et de les utiliser entre composants
+//Dynamise des booléens et de les utiliser entre composants
 export class Status {
-    value: boolean
+  value: boolean;
 
-    constructor(value:boolean){
-        this.value = value
-    }
+  constructor(value: boolean) {
+    this.value = value;
+  }
 }
