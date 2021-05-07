@@ -23,3 +23,9 @@ span {
   100% {
   }
 }
+
+@media (orientation: landscape) and (max-width: 640px) {
+  span {
+    font-size: 20px;
+  }
+}

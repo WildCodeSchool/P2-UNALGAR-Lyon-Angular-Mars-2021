@@ -49,10 +49,10 @@
       <h2>Nous retrouver</h2>
       <div class="row">
         <div class="col-md-6 col-sm-12 col-12 logosDiv">
-          <img class="logo" [src]="imageFb" [alt]="''">
-          <img class="logo" [src]="imageTwitter" [alt]="''">
-          <img class="logo" [src]="imageInstagram" [alt]="''">
-          <img class="logo" [src]="imageGithub" [alt]="''">
+          <img class="logo" [src]="imageFb" [alt]="logoFacebook">
+          <img class="logo" [src]="imageTwitter" [alt]="logoTwitter">
+          <img class="logo" [src]="imageInstagram" [alt]="logoInstagram">
+          <img class="logo" [src]="imageGithub" [alt]="logoGithub">
         </div>
       </div>
 
@@ -67,7 +67,7 @@
           <div class="form-item">
             <label for="lastname-user">Nom</label>
             <input class="col-md-12 col-sm-12 col-12" type="text" name="lastname" [(ngModel)]="user.lastname" required
-              minlength="3" maxlength="15" #lastname="ngModel" size="20" />
+              minlength="3" maxlength="15" #lastname="ngModel" size="11"  />
             <div *ngIf="form.submitted && lastname.errors">
               <span *ngIf="lastname.errors?.required">*Le nom est requis</span>
               <span *ngIf="lastname.errors?.minlength">*Le nom doit avoir au
@@ -78,7 +78,7 @@
           <div class="form-item">
             <label for="firstname-user">Prénom</label>
             <input class="col-md-12 col-sm-12 col-12" type="text" name="firstname" [(ngModel)]="user.firstname" required
-              minlength="3" maxlength="15" #firstname="ngModel" size="20" />
+              minlength="3" maxlength="15" #firstname="ngModel" size="11" />
             <div *ngIf="form.submitted && firstname.errors">
               <span *ngIf="firstname.errors?.required">*Le prénom est requis</span>
               <span *ngIf="firstname.errors?.minlength">*Le prénom doit avoir au moins 3 caractères</span>

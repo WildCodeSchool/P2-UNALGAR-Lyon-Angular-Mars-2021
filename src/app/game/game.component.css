@@ -10,7 +10,7 @@
 .bottom-menu {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 110px;
+  margin-top: 140px;
 }
 
 button {
@@ -55,4 +55,26 @@ span {
 .center {
   display: flex;
   justify-content: center;
+}
+
+@media (orientation: landscape) and (max-width: 640px) {
+  #jeux {
+    width: 100%;
+  }
+  .bottom-menu {
+    margin-top: 20px;
+  }
+
+  .backHome {
+    width: 30px;
+    margin-top: -20px;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+  span {
+    font-size: 15px;
+  }
 }

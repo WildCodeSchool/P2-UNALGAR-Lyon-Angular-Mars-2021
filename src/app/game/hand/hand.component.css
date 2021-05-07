@@ -38,3 +38,20 @@ button:focus {
   background-color: white;
   opacity: 0.2;
 }
+
+@media (orientation: landscape) and (max-width: 640px) {
+  button {
+    width: 80px;
+    height: 120px;
+  }
+
+  button1 {
+    width: 80px;
+    height: 120px;
+  }
+
+  .encart {
+    background-color: transparent;
+    font-size: 10px;
+  }
+}

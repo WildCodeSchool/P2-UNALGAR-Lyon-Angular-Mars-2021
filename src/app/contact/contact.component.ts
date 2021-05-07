@@ -16,6 +16,10 @@ export class ContactComponent implements OnInit {
   telephoneNumber: string = "06 40 95 24 24";
 
   //Nous retrouvez
+  logoFacebook : string = "logoFacebook"
+  logoTwitter : string = "logoTwitter"
+  logoInstagram : string = "logoInstagram"
+  logoGithub : string = "logoGithub"
 
   imageFb = "../../assets/img/fb.png";
   imageTwitter = "../../assets/img/twit.png";

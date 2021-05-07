@@ -107,3 +107,33 @@ span {
   color: white;
   font-family: "Russo One", sans-serif;
 }
+
+@media (orientation: landscape) and (max-width: 640px) {
+  .scroller {
+    width: 100%;
+    font-size: 20px;
+    min-height: 120px;
+    margin-top: 0px;
+  }
+  h1 {
+    font-size: 15px;
+    margin-top: 5px;
+  }
+
+  .timelineCard {
+    height: 95px;
+    width: 75px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .encart {
+    font-size: 5px;
+    background-color: grey;
+  }
+  .emptySpace {
+    height: 5px;
+    width: 5px;
+  }
+}
